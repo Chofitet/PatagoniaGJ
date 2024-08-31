@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqrjkylgm5rvb"]
+
+[ext_resource type="Script" path="res://MapDrawer/draw_mesh_ray_cast_3d.gd" id="1_f7kb6"]
+
+[node name="DrawMeshRayCast3D" type="RayCast3D"]
+hit_from_inside = true
+collide_with_areas = true
+script = ExtResource("1_f7kb6")
