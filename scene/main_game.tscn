@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5ekqkaxtqetf"]
+[gd_scene load_steps=12 format=3 uid="uid://c5ekqkaxtqetf"]
 
 [ext_resource type="Script" path="res://script/GameManager.cs" id="1_4u7d0"]
 [ext_resource type="PackedScene" uid="uid://cbscsjnfph22k" path="res://scene/rudder.tscn" id="1_wmwm1"]
 [ext_resource type="PackedScene" uid="uid://dcc2cnspull21" path="res://scene/world_screen.tscn" id="2_6hoob"]
+[ext_resource type="PackedScene" uid="uid://dougrx573rp4j" path="res://MapDrawer/map_ui.tscn" id="4_kp4aw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eqlmm"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -19,6 +20,15 @@ glow_enabled = true
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_o6uoa"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7ej7i"]
+viewport_path = NodePath("CharacterBody3D/Camera3D/Map2d/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7kf0"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_7ej7i")
+
+[sub_resource type="QuadMesh" id="QuadMesh_v1f8c"]
 
 [node name="MainGame" type="Node3D"]
 
@@ -50,3 +60,16 @@ render_target_update_mode = 4
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 3.7, 1.6, 0)
 texture = SubResource("ViewportTexture_o6uoa")
+
+[node name="Map2d" type="Node3D" parent="."]
+transform = Transform3D(4.17615, 0, 0, 0, 4.16754, -0.0409573, 0, 0.201931, 0.845293, -3.21048, 1.54534, -1.39617)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map2d"]
+material_override = SubResource("StandardMaterial3D_h7kf0")
+mesh = SubResource("QuadMesh_v1f8c")
+
+[node name="SubViewport" type="SubViewport" parent="Map2d"]
+size = Vector2i(2880, 2160)
+
+[node name="MapUI" parent="Map2d/SubViewport" instance=ExtResource("4_kp4aw")]
+texture_repeat = 2

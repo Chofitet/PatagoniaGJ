@@ -7,6 +7,8 @@ extends Control
  
 func RefreshLine(vector2):
 	
+	#Dede el game managr le debe llegar el vector 2 dede 
+	
 	var vectorPosition = vector2 * LineReposition
 	
 	Line2d.add_point(vectorPosition)

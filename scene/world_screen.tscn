@@ -1,12 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcc2cnspull21"]
+[gd_scene load_steps=8 format=3 uid="uid://dcc2cnspull21"]
 
 [ext_resource type="PackedScene" uid="uid://biqsdpxiniuh2" path="res://model/Isla_Submarina.glb" id="1_b0vmd"]
 [ext_resource type="Script" path="res://script/WorldScreen.cs" id="1_qqt5l"]
 [ext_resource type="Texture2D" uid="uid://6mg8idktc57o" path="res://icon.svg" id="2_vvqv7"]
+[ext_resource type="PackedScene" uid="uid://bqrjkylgm5rvb" path="res://MapDrawer/draw_mesh_ray_cast_3d.tscn" id="3_co7cr"]
 
 [sub_resource type="Environment" id="Environment_c3fce"]
 background_mode = 2
 background_color = Color(1, 1, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6l75r"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_13uq7"]
 
 [node name="WorldScreen" type="Node3D" node_paths=PackedStringArray("_cameraController")]
 script = ExtResource("1_qqt5l")
@@ -52,5 +57,21 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 light_energy = 0.5
 spot_range = 20.0
 
+[node name="DrawMeshRayCast3D" parent="CameraController" instance=ExtResource("3_co7cr")]
+visible = false
+
 [node name="Isla_Submarina" parent="." instance=ExtResource("1_b0vmd")]
 transform = Transform3D(-4.37114e-07, 0, -10, 0, 10, 0, 10, 0, -4.37114e-07, 0, 0, 0)
+
+[node name="Colliders" type="Node3D" parent="."]
+
+[node name="floor" type="Area3D" parent="Colliders" groups=["DrawDetector"]]
+transform = Transform3D(-31.4312, 1.50996e-07, 6.73269e-06, -4.74599e-06, -1, 0, 4.74599e-06, -2.27997e-14, 44.5885, 0.0964851, 18.9116, 3.31298)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/floor"]
+shape = SubResource("BoxShape3D_6l75r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Colliders/floor"]
+visible = false
+mesh = SubResource("BoxMesh_13uq7")
+skeleton = NodePath("../..")
