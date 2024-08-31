@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://jckg1ixi2u0b"]
+
+[ext_resource type="Script" path="res://RigthPathDetector/rigth_path_collider.gd" id="1_ok36o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p2xsf"]
+size = Vector3(0.409912, 0.25293, 0.23999)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nd1di"]
+albedo_color = Color(0.653422, 0.732201, 0.207989, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jn2ck"]
+size = Vector3(0.409912, 0.25293, 0.23999)
+
+[node name="RigthPathCollider" type="Area3D" groups=["RigthPath"]]
+script = ExtResource("1_ok36o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_p2xsf")
+
+[node name="CollisionShape3D2" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_nd1di")
+mesh = SubResource("BoxMesh_jn2ck")

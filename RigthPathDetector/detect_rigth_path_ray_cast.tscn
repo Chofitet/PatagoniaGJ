@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://crpy1o55lqirx"]
+
+[ext_resource type="Script" path="res://RigthPathDetector/detect_rigth_path_ray_cast_d_2.gd" id="1_uqdlq"]
+
+[node name="DetectRigthPathRayCastD2" type="RayCast3D"]
+hit_from_inside = true
+collide_with_areas = true
+script = ExtResource("1_uqdlq")
