@@ -1,9 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcc2cnspull21"]
+[gd_scene load_steps=13 format=3 uid="uid://dcc2cnspull21"]
 
 [ext_resource type="PackedScene" uid="uid://biqsdpxiniuh2" path="res://model/Isla_Submarina.glb" id="1_b0vmd"]
 [ext_resource type="Script" path="res://script/WorldScreen.cs" id="1_qqt5l"]
 [ext_resource type="Texture2D" uid="uid://6mg8idktc57o" path="res://icon.svg" id="2_vvqv7"]
 [ext_resource type="PackedScene" uid="uid://bqrjkylgm5rvb" path="res://MapDrawer/draw_mesh_ray_cast_3d.tscn" id="3_co7cr"]
+[ext_resource type="PackedScene" uid="uid://crpy1o55lqirx" path="res://RigthPathDetector/detect_rigth_path_ray_cast.tscn" id="4_a3l3x"]
+[ext_resource type="Script" path="res://RigthPathDetector/rigth_path_manager.gd" id="6_s17wd"]
+[ext_resource type="PackedScene" uid="uid://jckg1ixi2u0b" path="res://RigthPathDetector/rigth_path_collider.tscn" id="7_nkkh8"]
+[ext_resource type="PackedScene" uid="uid://ngf0lrixrxgq" path="res://RigthPathDetector/end_path_collider.tscn" id="8_b6f7m"]
+[ext_resource type="Script" path="res://RigthPathDetector/rigth_path_collider.gd" id="9_t2t0j"]
 
 [sub_resource type="Environment" id="Environment_c3fce"]
 background_mode = 2
@@ -45,12 +50,13 @@ texture = ExtResource("2_vvqv7")
 expand_mode = 1
 
 [node name="CameraController" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 20.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.01579, 20.2, 11.9486)
 
 [node name="FirstScreen" type="Camera3D" parent="CameraController"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 environment = SubResource("Environment_c3fce")
 fov = 50.0
+metadata/_edit_lock_ = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CameraController"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -59,6 +65,11 @@ spot_range = 20.0
 
 [node name="DrawMeshRayCast3D" parent="CameraController" instance=ExtResource("3_co7cr")]
 visible = false
+
+[node name="DetectRigthPathRayCastD2" parent="CameraController" instance=ExtResource("4_a3l3x")]
+target_position = Vector3(0, -5.1, 0)
+collision_mask = 2
+collide_with_bodies = false
 
 [node name="Isla_Submarina" parent="." instance=ExtResource("1_b0vmd")]
 transform = Transform3D(-4.37114e-07, 0, -10, 0, 10, 0, 10, 0, -4.37114e-07, 0, 0, 0)
@@ -75,3 +86,205 @@ shape = SubResource("BoxShape3D_6l75r")
 visible = false
 mesh = SubResource("BoxMesh_13uq7")
 skeleton = NodePath("../..")
+
+[node name="RigthPathManager" type="Node3D" parent="Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.7256, 0)
+script = ExtResource("6_s17wd")
+
+[node name="ColliderConteiner" type="Node3D" parent="Colliders/RigthPathManager"]
+
+[node name="RigthPathCollider" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.15439, 0, 11.3677)
+
+[node name="RigthPathCollider2" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.426805, 0, -0.904343, 0, 1, 0, 0.904343, 0, 0.426805, -2.78017, 0, 10.6775)
+
+[node name="RigthPathCollider3" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.994849, 0, -0.101369, 0, 1, 0, 0.101369, 0, 0.994849, -2.13611, 0, 10.2461)
+
+[node name="RigthPathCollider4" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.611058, 0, 0.791586, 0, 1, 0, -0.791586, 0, 0.611058, -2.75785, 0, 9.80399)
+
+[node name="RigthPathCollider5" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.894162, 0, 0.447743, 0, 1, 0, -0.447743, 0, 0.894162, -3.12691, 0, 9.13731)
+
+[node name="RigthPathCollider6" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.999877, 0, -0.0156726, 0, 1, 0, 0.0156726, 0, 0.999877, -3.38287, 0, 8.49444)
+
+[node name="RigthPathCollider7" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.798383, 0, -0.60215, 0, 1, 0, 0.60215, 0, 0.798383, -3.04953, 0, 7.69679)
+
+[node name="RigthPathCollider8" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.798383, 0, -0.60215, 0, 1, 0, 0.60215, 0, 0.798383, -2.72809, 0, 7.01821)
+
+[node name="RigthPathCollider9" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.798383, 0, -0.60215, 0, 1, 0, 0.60215, 0, 0.798383, -2.38879, 0, 6.292)
+
+[node name="RigthPathCollider10" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.885872, 0, -0.46393, 0, 1, 0, 0.46393, 0, 0.885872, -1.5852, 0, 5.91103)
+
+[node name="RigthPathCollider11" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.999922, 0, -0.0125138, 0, 1, 0, 0.0125138, 0, 0.999922, -1.04352, 0, 5.02411)
+
+[node name="RigthPathCollider12" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.272297, 0, 0.962213, 0, 1, 0, -0.962213, 0, 0.272297, -1.59115, 0, 4.40504)
+
+[node name="RigthPathCollider13" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.640096, 0, 0.768295, 0, 1, 0, -0.768295, 0, 0.640096, -1.93045, 0, 3.79193)
+
+[node name="RigthPathCollider14" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.640096, 0, 0.768295, 0, 1, 0, -0.768295, 0, 0.640096, -2.4127, -0.0129251, 2.84124)
+
+[node name="RigthPathCollider15" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.919568, 0, -0.392931, 0, 1, 0, 0.392931, 0, 0.919568, -2.07331, 0, 1.88117)
+
+[node name="RigthPathCollider16" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.871779, 0, 0.4899, 0, 1, 0, -0.4899, 0, 0.871779, -2.64947, 0, 0.766631)
+
+[node name="RigthPathCollider17" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.551136, 0, -0.834415, 0, 1, 0, 0.834415, 0, 0.551136, -2.15832, 0, 0.00156891)
+
+[node name="RigthPathCollider18" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.87749, 0, 0.479595, 0, 1, 0, -0.479595, 0, 0.87749, -2.60224, 0, -1.13186)
+
+[node name="RigthPathCollider19" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.930373, 0, -0.366615, 0, 1, 0, 0.366615, 0, 0.930373, -2.65891, 0, -2.4164)
+
+[node name="RigthPathCollider20" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.930373, 0, -0.366615, 0, 1, 0, 0.366615, 0, 0.930373, -2.42278, 0, -3.64428)
+
+[node name="RigthPathCollider21" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.89463, 0, 0.446806, 0, 1, 0, -0.446806, 0, 0.89463, -2.62113, 0, -4.64547)
+
+[node name="RigthPathCollider23" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.89463, 0, 0.446806, 0, 1, 0, -0.446806, 0, 0.89463, -2.69669, 0, -5.76945)
+
+[node name="RigthPathCollider24" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.678108, 0, -0.734962, 0, 1, 0, 0.734962, 0, 0.678108, -2.20169, 0.0130692, -7.06439)
+
+[node name="RigthPathCollider22" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.89463, 0, 0.446806, 0, 1, 0, -0.446806, 0, 0.89463, -2.2346, 0, -7.79341)
+
+[node name="RigthPathCollider25" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.875388, 0, -0.48342, 0, 1, 0, 0.48342, 0, 0.875388, -1.601, 0, -8.69856)
+
+[node name="RigthPathCollider26" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.875388, 0, -0.48342, 0, 1, 0, 0.48342, 0, 0.875388, -1.29928, 0, -9.55342)
+
+[node name="RigthPathCollider27" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.458385, 0, -0.888753, 0, 1, 0, 0.888753, 0, 0.458385, -0.595273, 0, -10.006)
+
+[node name="RigthPathCollider28" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.999643, 0, -0.0267006, 0, 1, 0, 0.0267006, 0, 0.999643, 0.00815916, 0, -10.6597)
+
+[node name="RigthPathCollider29" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.318083, 0, -0.948063, 0, 1, 0, 0.948063, 0, -0.318083, 0.852965, 0, -11.2129)
+
+[node name="RigthPathCollider30" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.420624, 0, -0.907235, 0, 1, 0, 0.907235, 0, 0.420624, 1.82851, 0, -10.9815)
+
+[node name="RigthPathCollider31" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(0.420624, 0, -0.907235, 0, 1, 0, 0.907235, 0, 0.420624, 2.69343, 0, -11.1927)
+
+[node name="RigthPathCollider32" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.513736, 0, -0.857948, 0, 1, 0, 0.857948, 0, -0.513736, 3.50807, 0, -10.7804)
+
+[node name="RigthPathCollider33" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.513736, 0, -0.857948, 0, 1, 0, 0.857948, 0, -0.513736, 4.62442, 0, -10.4284)
+
+[node name="RigthPathCollider34" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.422856, 0, -0.906197, 0, 1, 0, 0.906197, 0, -0.422856, 4.96636, 0, -9.41262)
+
+[node name="RigthPathCollider35" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.853624, 0, -0.52089, 0, 1, 0, 0.52089, 0, -0.853624, 5.93186, 0, -8.38679)
+
+[node name="RigthPathCollider36" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.965708, 0, 0.259628, 0, 1, 0, -0.259628, 0, -0.965708, 6.0626, 0, -7.38107)
+
+[node name="RigthPathCollider37" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.87135, 0, 0.490661, 0, 1, 0, -0.490661, 0, -0.87135, 5.94191, 0, -6.29489)
+
+[node name="RigthPathCollider38" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.892113, 0, -0.451812, 0, 1, 0, 0.451812, 0, -0.892113, 5.95197, 0, -5.20871)
+
+[node name="RigthPathCollider39" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.998735, 0, 0.0502796, 0, 1, 0, -0.0502796, 0, -0.998735, 5.59997, 0, -4.20299)
+
+[node name="RigthPathCollider40" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.981753, 0, 0.190158, 0, 1, 0, -0.190158, 0, -0.981753, 5.4994, 0, -3.08664)
+
+[node name="RigthPathCollider41" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.843138, 0, 0.537697, 0, 1, 0, -0.537697, 0, -0.843138, 5.31837, 0, -1.97029)
+
+[node name="RigthPathCollider42" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.971047, 0, 0.23889, 0, 1, 0, -0.23889, 0, -0.971047, 4.86579, 0, -0.441591)
+
+[node name="RigthPathCollider43" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.955046, 0, -0.296458, 0, 1, 0, 0.296458, 0, -0.955046, 5.31837, 0, 0.795445)
+
+[node name="RigthPathCollider44" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.955046, 0, -0.296458, 0, 1, 0, 0.296458, 0, -0.955046, 5.51951, 0, 1.99225)
+
+[node name="RigthPathCollider45" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.884059, 0, 0.467375, 0, 1, 0, -0.467375, 0, -0.884059, 5.29825, 0, 3.23935)
+
+[node name="RigthPathCollider46" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.884059, 0, 0.467375, 0, 1, 0, -0.467375, 0, -0.884059, 5.27814, 0, 4.0741)
+
+[node name="RigthPathCollider47" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.884059, 0, 0.467375, 0, 1, 0, -0.467375, 0, -0.884059, 4.5339, 0, 4.9893)
+
+[node name="RigthPathCollider48" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.884059, 0, 0.467375, 0, 1, 0, -0.467375, 0, -0.884059, 4.00087, 0, 5.87434)
+
+[node name="RigthPathCollider49" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.884059, 0, 0.467375, 0, 1, 0, -0.467375, 0, -0.884059, 3.6187, 0, 6.75937)
+
+[node name="RigthPathCollider50" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.990541, 0, 0.13722, 0, 1, 0, -0.13722, 0, -0.990541, 3.24658, 0, 7.88578)
+
+[node name="RigthPathCollider51" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.990541, 0, 0.13722, 0, 1, 0, -0.13722, 0, -0.990541, 2.86441, 0, 9.22339)
+
+[node name="RigthPathCollider52" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.990541, 0, 0.13722, 0, 1, 0, -0.13722, 0, -0.990541, 2.47729, 0, 10.4199)
+
+[node name="RigthPathCollider53" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.990541, 0, 0.13722, 0, 1, 0, -0.13722, 0, -0.990541, 1.99633, 0, 11.4874)
+
+[node name="RigthPathCollider54" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.819522, 0, 0.573048, 0, 1, 0, -0.573048, 0, -0.819522, 1.56229, 0, 12.7895)
+
+[node name="RigthPathCollider55" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.949157, 0, -0.314804, 0, 1, 0, 0.314804, 0, -0.949157, 1.36287, 0, 14.033)
+
+[node name="RigthPathCollider56" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.0290385, 0, -0.999578, 0, 1, 0, 0.999578, 0, -0.0290385, 0.307106, 0, 15.1709)
+
+[node name="RigthPathCollider57" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.0290385, 0, -0.999578, 0, 1, 0, 0.999578, 0, -0.0290385, -0.983275, 0, 14.8072)
+
+[node name="RigthPathCollider58" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.597611, 0, -0.801786, 0, 1, 0, 0.801786, 0, -0.597611, -2.19154, 0, 13.9626)
+
+[node name="RigthPathCollider59" parent="Colliders/RigthPathManager/ColliderConteiner" instance=ExtResource("7_nkkh8")]
+transform = Transform3D(-0.106143, 0, -0.994351, 0, 1, 0, 0.994351, 0, -0.106143, -2.66077, 0, 13.2705)
+
+[node name="EndPathCollider" parent="Colliders/RigthPathManager" instance=ExtResource("8_b6f7m")]
+transform = Transform3D(2.47116, 0, 0.422508, 0, 1, 0, -1.15196, 0, 0.906359, -2.97471, 0.0159016, 12.5133)
+
+[node name="LimitCollider2" type="Area3D" parent="Colliders/RigthPathManager" groups=["Limit"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.02301, 0, 12.7851)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("9_t2t0j")
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Colliders/RigthPathManager/LimitCollider2" groups=["Limit"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+polygon = PackedVector2Array(-4.09135, -0.883397, -4.63795, 1.79497, -4.09135, 4.85595, -2.45153, 7.26101, -1.63163, 8.73684, -2.67018, 11.7432, -2.7795, 15.4601, -2.01425, 19.3956, -0.757059, 22.4566, 1.1014, 25.135, 3.77976, 26.0095, 7.38735, 25.7909, 9.79241, 23.7685, 10.8856, 21.2541, 11.1043, 18.9583, 10.339, 16.7719, 9.90173, 13.8749, 10.2297, 12.0165, 10.2843, 8.29956, 8.9725, 5.40256, 8.37124, 3.21614, 7.49667, 0.811077, 6.3488, -1.64864, 5.41957, -3.67108, 3.56112, -4.49098, 0.828093, -4.0537, -0.647739, -2.85117, -3.21678, -1.37534, -3.3261, -5.91216, 11.0496, -5.80283, 13.0174, 26.5015, -2.28755, 27.1574, -6.16844, -1.43)
+
+[node name="CollisionPolygon3D2" type="CSGPolygon3D" parent="Colliders/RigthPathManager/LimitCollider2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -21.6903, 0, 0)
+polygon = PackedVector2Array(-4.09135, -0.883397, -4.63795, 1.79497, -4.09135, 4.85595, -2.45153, 7.26101, -1.63163, 8.73684, -2.67018, 11.7432, -2.7795, 15.4601, -2.01425, 19.3956, -0.757059, 22.4566, 1.1014, 25.135, 3.77976, 26.0095, 7.38735, 25.7909, 9.79241, 23.7685, 10.8856, 21.2541, 11.1043, 18.9583, 10.339, 16.7719, 9.90173, 13.8749, 10.2297, 12.0165, 10.2843, 8.29956, 8.9725, 5.40256, 8.37124, 3.21614, 7.49667, 0.811077, 6.3488, -1.64864, 5.41957, -3.67108, 3.56112, -4.49098, 0.828093, -4.0537, -0.647739, -2.85117, -3.21678, -1.37534, -3.3261, -5.91216, 11.0496, -5.80283, 13.0174, 26.5015, -2.28755, 27.1574, -6.16844, -1.43)
+
+[editable path="Colliders/RigthPathManager/ColliderConteiner/RigthPathCollider"]

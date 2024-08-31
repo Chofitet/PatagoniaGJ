@@ -14,9 +14,19 @@ config/name="PatagoniaGJ"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/canvas_textures/default_texture_repeat=1
+
 [dotnet]
 
 project/assembly_name="PatagoniaGJ"
+
+[global_group]
+
+RigthPath=""
 
 [rendering]
 

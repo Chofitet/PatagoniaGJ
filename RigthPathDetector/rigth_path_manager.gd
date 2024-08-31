@@ -13,6 +13,7 @@ func  _ready() -> void:
 func EndPath():
 	OnEndPath.emit(CalculatePercent())
 
+
 func CalculatePercent() -> float:
 	var countnum = 0
 	

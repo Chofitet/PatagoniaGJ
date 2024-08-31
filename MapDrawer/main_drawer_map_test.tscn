@@ -1,23 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://b4e2rifpuiiuo"]
+[gd_scene load_steps=12 format=3 uid="uid://b4e2rifpuiiuo"]
 
 [ext_resource type="Script" path="res://Movecharacter_body_3d.gd" id="1_jaiad"]
 [ext_resource type="PackedScene" uid="uid://bqrjkylgm5rvb" path="res://MapDrawer/draw_mesh_ray_cast_3d.tscn" id="3_1rpke"]
 [ext_resource type="PackedScene" uid="uid://crpy1o55lqirx" path="res://RigthPathDetector/detect_rigth_path_ray_cast.tscn" id="3_72sra"]
-[ext_resource type="PackedScene" uid="uid://dougrx573rp4j" path="res://MapDrawer/map_ui.tscn" id="3_yllf8"]
 [ext_resource type="Script" path="res://RigthPathDetector/rigth_path_manager.gd" id="5_242mt"]
 [ext_resource type="PackedScene" uid="uid://jckg1ixi2u0b" path="res://RigthPathDetector/rigth_path_collider.tscn" id="6_7dcbm"]
+[ext_resource type="PackedScene" uid="uid://cbcyq4bk5pjmc" path="res://MapDrawer/map_2d.tscn" id="7_aewk2"]
 [ext_resource type="PackedScene" uid="uid://ngf0lrixrxgq" path="res://RigthPathDetector/end_path_collider.tscn" id="7_w5usb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hbi52"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_yq17i"]
-viewport_path = NodePath("CharacterBody3D/Camera3D/Map2d/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jwj5"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_yq17i")
-
-[sub_resource type="QuadMesh" id="QuadMesh_6a27v"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5dqe0"]
 
@@ -42,19 +33,6 @@ shape = SubResource("BoxShape3D_hbi52")
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.790155, 0.612907, 0, -0.612907, 0.790155, 0, 1.417, 2.531)
 fov = 64.6875
-
-[node name="Map2d" type="Node3D" parent="CharacterBody3D/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 0.998828, -0.0483966, 0, 0.0483966, 0.998828, -0.013134, 0.150993, -1.39617)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Camera3D/Map2d"]
-material_override = SubResource("StandardMaterial3D_2jwj5")
-mesh = SubResource("QuadMesh_6a27v")
-
-[node name="SubViewport" type="SubViewport" parent="CharacterBody3D/Camera3D/Map2d"]
-size = Vector2i(2880, 2160)
-
-[node name="MapUI" parent="CharacterBody3D/Camera3D/Map2d/SubViewport" instance=ExtResource("3_yllf8")]
-texture_repeat = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
 transform = Transform3D(-0.601171, 0, 0, 0, -0.568608, 0, 0, 0, 0.629751, 0, 0, 0)
@@ -82,5 +60,6 @@ script = ExtResource("5_242mt")
 
 [node name="EndPathCollider" parent="RigthPathManager" instance=ExtResource("7_w5usb")]
 
-[connection signal="NewColliderPoint" from="CharacterBody3D/DrawMeshRayCast3D" to="CharacterBody3D/Camera3D/Map2d/SubViewport/MapUI" method="RefreshLine"]
+[node name="Map2d" parent="." instance=ExtResource("7_aewk2")]
+
 [connection signal="OnEndPath" from="CharacterBody3D/DetectRigthPathRayCastD2" to="RigthPathManager" method="EndPath"]
