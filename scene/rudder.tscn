@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbscsjnfph22k"]
+
+[ext_resource type="Script" path="res://script/Rudder.cs" id="1_ftidm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mkods"]
+
+[node name="Rudder" type="CharacterBody3D"]
+script = ExtResource("1_ftidm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_mkods")
