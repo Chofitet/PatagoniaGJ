@@ -1,4 +1,4 @@
-using System.Runtime.Serialization.Formatters;
+
 using Godot;
 
 public partial class MainMenu : Control
@@ -8,7 +8,10 @@ public partial class MainMenu : Control
 	private void OnStartPressed()
 	{
 		if (_mainGame != null)
+		{
+			//TransitionScreen.Transition();
 			GetTree().ChangeSceneToPacked(_mainGame);
+		}
 	}
 
 	private void OnOptionsPressed()
