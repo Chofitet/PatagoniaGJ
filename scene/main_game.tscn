@@ -22,10 +22,10 @@ viewport_path = NodePath("SubViewport")
 
 [node name="MainGame" type="Node3D"]
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("_rudder", "_firstScreen")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("_rudder", "_worldScreen")]
 script = ExtResource("1_4u7d0")
 _rudder = NodePath("../Rudder")
-_firstScreen = NodePath("../SubViewport/FirstScreen/FirstScreen")
+_worldScreen = NodePath("../SubViewport/WorldScreen")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
@@ -45,10 +45,8 @@ own_world_3d = true
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="FirstScreen" parent="SubViewport" instance=ExtResource("2_6hoob")]
+[node name="WorldScreen" parent="SubViewport" instance=ExtResource("2_6hoob")]
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 3.7, 1.6, 0)
 texture = SubResource("ViewportTexture_o6uoa")
-
-[editable path="SubViewport/FirstScreen"]
