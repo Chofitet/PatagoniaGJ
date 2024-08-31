@@ -1,4 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://p6wwpaohpjpj"]
+[gd_scene load_steps=8 format=3 uid="uid://p6wwpaohpjpj"]
+
+[ext_resource type="Script" path="res://script/MainMenu.cs" id="1_i1ti6"]
+[ext_resource type="PackedScene" uid="uid://c5ekqkaxtqetf" path="res://scene/main_game.tscn" id="2_kqhn6"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_4i0yd"]
 
@@ -40,6 +43,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_i1ti6")
+_mainGame = ExtResource("2_kqhn6")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -100,3 +105,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_f8obh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_iehxt")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cjd0n")
 text = "Salir"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="OnStartPressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="OnOptionsPressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="OnQuitPressed"]
