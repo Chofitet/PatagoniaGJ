@@ -1,0 +1,96 @@
+[gd_scene load_steps=11 format=3 uid="uid://bqaapqrismxbd"]
+
+[ext_resource type="Script" path="res://script/WorldScreen.cs" id="1_jwwr2"]
+[ext_resource type="Texture2D" uid="uid://6mg8idktc57o" path="res://icon.svg" id="2_k8q0k"]
+[ext_resource type="PackedScene" uid="uid://bqrjkylgm5rvb" path="res://MapDrawer/draw_mesh_ray_cast_3d.tscn" id="3_bir5b"]
+[ext_resource type="PackedScene" uid="uid://biqsdpxiniuh2" path="res://model/Isla_Submarina.glb" id="4_oxc7h"]
+[ext_resource type="Shader" path="res://shader/under_water.gdshader" id="5_pygmr"]
+
+[sub_resource type="Environment" id="Environment_c3fce"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6nury"]
+render_priority = 0
+shader = ExtResource("5_pygmr")
+shader_parameter/tint = Color(0.712228, 0.915314, 0.995076, 1)
+shader_parameter/wave_speed = 1.5
+shader_parameter/wave_freq = 3.0
+shader_parameter/wave_width = 1.0
+shader_parameter/blur = 0.1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ksuyg"]
+material = SubResource("ShaderMaterial_6nury")
+size = Vector2(1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6l75r"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_13uq7"]
+
+[node name="WorldWaterScreen" type="Node3D" node_paths=PackedStringArray("_cameraController")]
+script = ExtResource("1_jwwr2")
+_cameraController = NodePath("CameraController")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k8q0k")
+expand_mode = 1
+
+[node name="CameraController" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 20.2, 0)
+
+[node name="FirstScreen" type="Camera3D" parent="CameraController"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+environment = SubResource("Environment_c3fce")
+fov = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CameraController/FirstScreen"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.26351e-08, -0.289057)
+mesh = SubResource("PlaneMesh_ksuyg")
+skeleton = NodePath("../../..")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CameraController"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_energy = 0.5
+spot_range = 20.0
+
+[node name="DrawMeshRayCast3D" parent="CameraController" instance=ExtResource("3_bir5b")]
+visible = false
+
+[node name="Isla_Submarina" parent="." instance=ExtResource("4_oxc7h")]
+transform = Transform3D(-4.37114e-07, 0, -10, 0, 10, 0, 10, 0, -4.37114e-07, 0, 0, 0)
+
+[node name="Colliders" type="Node3D" parent="."]
+
+[node name="floor" type="Area3D" parent="Colliders" groups=["DrawDetector"]]
+transform = Transform3D(-31.4312, 1.50996e-07, 6.73269e-06, -4.74599e-06, -1, 0, 4.74599e-06, -2.27997e-14, 44.5885, 0.0964851, 18.9116, 3.31298)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/floor"]
+shape = SubResource("BoxShape3D_6l75r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Colliders/floor"]
+visible = false
+mesh = SubResource("BoxMesh_13uq7")
+skeleton = NodePath("../..")
