@@ -14,7 +14,6 @@ config/name="PatagoniaGJ"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
-
 [display]
 
 window/size/viewport_width=1920
