@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerSettings="*res://PlayerSettings.gd"
+SoundController="*res://script/SoundController.gd"
 
 [display]
 

@@ -2,6 +2,7 @@ extends Control
 
 var FishInstance1 = preload("res://scene/path_fish.tscn")
 var FishInstance2 = preload("res://scene/path_fish_2.tscn")
+var FishInstance3 = preload("res://scene/path_fish_3.tscn")
 var FishPull :=[]
 
 func _ready() -> void:
@@ -14,6 +15,7 @@ func _ready() -> void:
 func FillFishPull():
 	FishPull.append(FishInstance1)
 	FishPull.append(FishInstance2)
+	FishPull.append(FishInstance3)
 
 func InstanceFish():
 	var fish

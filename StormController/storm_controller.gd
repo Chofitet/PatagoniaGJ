@@ -13,7 +13,6 @@ func _ready() -> void:
 	
 func SetStorm():
 	var direction
-	
 	if LastDirection == 1:
 		controlWindow.LeftWaves()
 		direction = -1

@@ -1,0 +1,149 @@
+[gd_scene load_steps=14 format=3 uid="uid://c263c65gx7ufj"]
+
+[ext_resource type="Texture2D" uid="uid://br7b808clisi2" path="res://sprite/cangrejo/Cangrejo_Lithodes_Turkayi_4.png" id="1_p58wv"]
+[ext_resource type="Texture2D" uid="uid://4rktk7sn51l3" path="res://sprite/cangrejo/Cangrejo_Lithodes_Turkayi_5.png" id="2_beuwq"]
+[ext_resource type="Texture2D" uid="uid://5bwtmhiiy1e5" path="res://sprite/cangrejo/Cangrejo_Lithodes_Turkayi_6.png" id="3_daw0c"]
+[ext_resource type="Texture2D" uid="uid://d0dhkjrxvb6mt" path="res://sprite/cangrejo/Cangrejo_Lithodes_Turkayi_7.png" id="4_hyvu4"]
+[ext_resource type="Texture2D" uid="uid://cp2lsxxmjxv67" path="res://sprite/cangrejo/Cangrejo_Lithodes_Turkayi_8.png" id="5_3lrug"]
+[ext_resource type="Texture2D" uid="uid://bkvs8aetqy8vn" path="res://sprite/cangrejo/Cangrejo_Lithodes_Turkayi_3.png" id="6_fm6f8"]
+[ext_resource type="Texture2D" uid="uid://drde1nnnrbm2r" path="res://sprite/cangrejo/Cangrejo_Lithodes_Turkayi_2.png" id="7_8xwla"]
+[ext_resource type="Texture2D" uid="uid://b40rbjoduar5o" path="res://sprite/cangrejo/Cangrejo_Lithodes_Turkayi_1.png" id="8_jn2l1"]
+
+[sub_resource type="Curve2D" id="Curve2D_knwjn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1128, -453, 30.2381, -25.1984, -30.2381, 25.1984, 957, -456, 90.7143, 17.6389, -90.7143, -17.6389, 888, -363, 85.6746, -22.6786, -85.6746, 22.6786, 742, -429, 64.3845, 19.8119, -64.3845, -19.8119, 609, -303, 52.9167, -75.5953, -52.9167, 75.5953, 438, -387, 113.393, -35.2778, -113.393, 35.2778, 300, -332, 108.353, -52.9167, -108.353, 52.9167, 248, -189, 50.3968, -2.51984, -50.3968, 2.51984, 50, -368, 0, 0, 0, 0, -147, -329)
+}
+point_count = 10
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x8gsh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_p58wv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_beuwq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_daw0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hyvu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3lrug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hyvu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_daw0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_beuwq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_p58wv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fm6f8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8xwla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jn2l1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8xwla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fm6f8")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 8.0
+}]
+
+[sub_resource type="Animation" id="Animation_hdg36"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2l34w"]
+resource_name = "fish_follow"
+length = 11.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10.3333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(35, 903)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w4lrn"]
+_data = {
+"RESET": SubResource("Animation_hdg36"),
+"fish_follow": SubResource("Animation_2l34w")
+}
+
+[node name="PathFish3" type="Path2D"]
+curve = SubResource("Curve2D_knwjn")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(1128, -453)
+rotation = -3.12405
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PathFollow2D"]
+rotation = 1.90672
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_x8gsh")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame = 5
+frame_progress = 0.396324
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w4lrn")
+}
+autoplay = "fish_follow"
