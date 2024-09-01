@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dj3bjvbj2ptdk"]
+[gd_scene load_steps=5 format=3 uid="uid://dj3bjvbj2ptdk"]
 
 [ext_resource type="Script" path="res://effect/typewriter/Typewriter.cs" id="1_nosgn"]
 [ext_resource type="AudioStream" uid="uid://bad66xln7ayva" path="res://Sfx/typewriter.wav" id="2_mxlls"]
+[ext_resource type="PackedScene" uid="uid://c5ekqkaxtqetf" path="res://scene/main_game.tscn" id="2_xwuua"]
+[ext_resource type="PackedScene" uid="uid://t47yf2rt375c" path="res://scene/transition_screen.tscn" id="4_j5wrf"]
 
-[node name="Typewriter" type="Node2D" node_paths=PackedStringArray("_typeTimer", "_delayTimer", "_audioStreamTypewriter")]
+[node name="Typewriter" type="Node2D" node_paths=PackedStringArray("_typeTimer", "_delayTimer", "_audioStreamTypewriter", "_transitionScreen")]
 script = ExtResource("1_nosgn")
+_mainGame = ExtResource("2_xwuua")
 _typeTimer = NodePath("TypeTimer")
 _delayTimer = NodePath("DelayTimer")
 _audioStreamTypewriter = NodePath("AudioStreamTypewriter")
+_transitionScreen = NodePath("TransitionScreen")
 
 [node name="TypeTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -19,5 +23,10 @@ one_shot = true
 [node name="AudioStreamTypewriter" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_mxlls")
 
+[node name="TransitionScreen" parent="." instance=ExtResource("4_j5wrf")]
+
 [connection signal="timeout" from="TypeTimer" to="." method="OnTypeTimerTimeout"]
 [connection signal="timeout" from="DelayTimer" to="." method="OnDelaytimerTimeout"]
+[connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="." method="OnAnimationFinished"]
+
+[editable path="TransitionScreen"]

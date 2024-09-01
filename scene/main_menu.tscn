@@ -1,13 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://cxpt8hnq2a4dq"]
+[gd_scene load_steps=15 format=3 uid="uid://cxpt8hnq2a4dq"]
 
 [ext_resource type="Script" path="res://script/MainMenu.cs" id="1_i1ti6"]
-[ext_resource type="PackedScene" uid="uid://c5ekqkaxtqetf" path="res://scene/main_game.tscn" id="2_kqhn6"]
+[ext_resource type="PackedScene" uid="uid://vqel4gjunwjj" path="res://scene/intro.tscn" id="2_v8fui"]
 [ext_resource type="Texture2D" uid="uid://8o47s4itjsa2" path="res://background/Menu_Inicio.png" id="3_lh22a"]
 [ext_resource type="Texture2D" uid="uid://c7y6bw0nyb2aw" path="res://sprite/Alvatroz/Albatroz_Menu_3.png" id="4_j1hqr"]
 [ext_resource type="Texture2D" uid="uid://d24wmlmlhxcm4" path="res://sprite/Alvatroz/Albatroz_Menu_4.png" id="5_7dy8v"]
 [ext_resource type="Texture2D" uid="uid://cfxe4v2btsxvs" path="res://sprite/Alvatroz/Albatroz_Menu_5.png" id="6_boyvo"]
 [ext_resource type="Texture2D" uid="uid://cphvqdmt41c8u" path="res://sprite/Alvatroz/Albatroz_Menu_2.png" id="7_4104c"]
 [ext_resource type="Texture2D" uid="uid://ddii2n3h2jb2b" path="res://sprite/Alvatroz/Albatroz_Menu_1.png" id="8_fek2n"]
+[ext_resource type="PackedScene" uid="uid://t47yf2rt375c" path="res://scene/transition_screen.tscn" id="8_ywt2n"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2fhcb"]
 texture = ExtResource("3_lh22a")
@@ -71,7 +72,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("_transition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,7 +80,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i1ti6")
-_mainGame = ExtResource("2_kqhn6")
+_intro = ExtResource("2_v8fui")
+_transition = NodePath("TransitionScreen")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -136,5 +138,10 @@ sprite_frames = SubResource("SpriteFrames_l2apu")
 autoplay = "default"
 frame_progress = 0.282681
 
+[node name="TransitionScreen" parent="." instance=ExtResource("8_ywt2n")]
+
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="OnStartPressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="OnQuitPressed"]
+[connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="." method="OnAnimationFinished"]
+
+[editable path="TransitionScreen"]

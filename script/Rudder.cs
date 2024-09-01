@@ -1,3 +1,4 @@
+
 using Godot;
 
 public partial class Rudder : CharacterBody3D
@@ -8,11 +9,16 @@ public partial class Rudder : CharacterBody3D
 	[Export] private double _targetRotationZ = 0.0f;
 	private float ExtraAddForceDirection = 0;
 	
+	private bool _canMoveRudder = false;
+
+	public bool CanMoveRudder { set { _canMoveRudder = value; } }
+
 	private double _delta;
 
 	public override void _PhysicsProcess(double delta)
 	{
-		Controller(delta);
+		if (_canMoveRudder == true)
+			Controller(delta);
 	}
 
 	private void Controller(double delta)

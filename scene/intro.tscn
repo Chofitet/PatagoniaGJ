@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://vqel4gjunwjj"]
+[gd_scene load_steps=6 format=3 uid="uid://vqel4gjunwjj"]
 
 [ext_resource type="Script" path="res://script/Intro.cs" id="1_7jxbw"]
 [ext_resource type="Texture2D" uid="uid://q6men37jjk5t" path="res://background/Intro_Image.png" id="2_lqgud"]
 [ext_resource type="PackedScene" uid="uid://dj3bjvbj2ptdk" path="res://effect/typewriter/typewriter.tscn" id="2_v7rpk"]
+[ext_resource type="PackedScene" uid="uid://t47yf2rt375c" path="res://scene/transition_screen.tscn" id="4_fst35"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_820hx"]
 texture = ExtResource("2_lqgud")
 
-[node name="Control" type="Control" node_paths=PackedStringArray("_typewriter")]
+[node name="Control" type="Control" node_paths=PackedStringArray("_typewriter", "_transition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +16,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7jxbw")
-_typewriter = NodePath("Label/Typewriter")
+_typewriter = NodePath("Typewriter")
+_transition = NodePath("TransitionScreen")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -27,6 +29,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_820hx")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -40,9 +43,17 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 42
-text = "Área Marina Protegida Namuncurá - Banco Burdwood I"
+text = "Área Marina Protegida Namuncurá"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Typewriter" parent="Label" node_paths=PackedStringArray("_parentLabel") instance=ExtResource("2_v7rpk")]
-_parentLabel = NodePath("..")
+[node name="Typewriter" parent="." node_paths=PackedStringArray("_parentLabel", "_transitionScreen") instance=ExtResource("2_v7rpk")]
+position = Vector2(606, 511)
+_parentLabel = NodePath("../Label")
+_transitionScreen = NodePath("../TransitionScreen")
+
+[node name="TransitionScreen" parent="." instance=ExtResource("4_fst35")]
+
+[connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="." method="OnAnimationFinished"]
+
+[editable path="TransitionScreen"]

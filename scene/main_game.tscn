@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://c5ekqkaxtqetf"]
+[gd_scene load_steps=81 format=4 uid="uid://c5ekqkaxtqetf"]
 
 [ext_resource type="Script" path="res://script/GameManager.cs" id="1_4u7d0"]
 [ext_resource type="PackedScene" uid="uid://cbscsjnfph22k" path="res://scene/rudder.tscn" id="1_wmwm1"]
@@ -15,6 +15,7 @@
 [ext_resource type="Material" uid="uid://df7envwjc6jo" path="res://scene/pantalla.tres" id="10_pdt1o"]
 [ext_resource type="Script" path="res://StormController/storm_controller.gd" id="14_rtf2g"]
 [ext_resource type="Texture2D" uid="uid://dmwkhpkkm23km" path="res://model/raindrops-rain-wet-droplets-preview.jpg" id="15_mpxan"]
+[ext_resource type="PackedScene" uid="uid://t47yf2rt375c" path="res://scene/transition_screen.tscn" id="16_gpr34"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eqlmm"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -861,10 +862,13 @@ _data = {
 
 [node name="MainGame" type="Node3D"]
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("_rudder", "_worldScreen")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("_rudder", "_worldScreen", "_transition", "_televisionCam", "_televisionCamTwo")]
 script = ExtResource("1_4u7d0")
 _rudder = NodePath("../objects/Rudder")
 _worldScreen = NodePath("../SubViewport/WorldScreen")
+_transition = NodePath("../TransitionScreen")
+_televisionCam = NodePath("../objects/CamViewport")
+_televisionCamTwo = NodePath("../objects/Map2d/Sprite3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.982723, 0.185083, 0, -0.185083, 0.982723, 0, 0.241526, 4.12531)
@@ -1083,6 +1087,7 @@ size = Vector2i(1986, 532)
 [node name="ControlWindow" parent="StormController/SpriteWindow/SubViewport" instance=ExtResource("8_ir4mb")]
 
 [node name="Timer" type="Timer" parent="StormController"]
+wait_time = 10.0
 autostart = true
 
 [node name="BoatBounceMoveAnim" type="AnimationPlayer" parent="StormController"]
@@ -1092,11 +1097,15 @@ libraries = {
 }
 autoplay = "idle_anim"
 
+[node name="TransitionScreen" parent="." instance=ExtResource("16_gpr34")]
+
 [connection signal="NewColliderPoint" from="SubViewport/WorldScreen/CameraController/DrawMeshRayCast3D" to="objects/Map2d/MapViewPort/MapUI" method="RefreshLine"]
 [connection signal="OnEndPath" from="SubViewport/WorldScreen/CameraController/DetectRigthPathRayCastD2" to="SubViewport/WorldScreen/Colliders/RigthPathManager" method="EndPath"]
 [connection signal="OnLimit" from="SubViewport/WorldScreen/CameraController/DetectRigthPathRayCastD2" to="SubViewport/WorldScreen" method="TransportToLastCheckCollider"]
 [connection signal="OnSetStorm" from="StormController" to="objects/Rudder" method="AddForce"]
 [connection signal="StopStorm" from="StormController" to="objects/Rudder" method="ForceTo0"]
+[connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="GameManager" method="OnAnimationFinished"]
 
 [editable path="SubViewport/WorldScreen"]
 [editable path="SubViewport/WorldScreen/Colliders/RigthPathManager/ColliderConteiner/RigthPathCollider"]
+[editable path="TransitionScreen"]

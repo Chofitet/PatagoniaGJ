@@ -2,10 +2,13 @@ using Godot;
 
 public partial class Typewriter : Node2D
 {
+	[Export] private PackedScene _mainGame = null;
 	[Export] private Timer _typeTimer = null;
 	[Export] private Timer _delayTimer = null;
 	[Export] private Label _parentLabel = null;
 	[Export] private AudioStreamPlayer _audioStreamTypewriter = null;
+
+	[Export] private TransitionScreen _transitionScreen = null;
 
 	private int _textPosition = 0;
 	private string _textToType = string.Empty;
@@ -33,6 +36,10 @@ public partial class Typewriter : Node2D
 			_textPosition = -1;
 			_initialized = false;
 			_audioStreamTypewriter.Stop();
+
+			if (_transitionScreen == null) return;
+			_transitionScreen.TransitionOnlyBlack();
+			GetTree().ChangeSceneToPacked(_mainGame);
 		}
 	}
 
@@ -52,4 +59,10 @@ public partial class Typewriter : Node2D
         else
             GD.PrintErr("Aborting: The parent node is not a label. Make sure the typewriter scene is a child to a label node.");
 	}
+
+	/*private void OnAnimationFinished(string animationName)
+	{
+		if (animationName == "fade_to_black")
+			GetTree().ChangeSceneToPacked(_mainGame);
+	}*/
 }
