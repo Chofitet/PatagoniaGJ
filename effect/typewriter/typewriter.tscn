@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj3bjvbj2ptdk"]
+
+[ext_resource type="Script" path="res://effect/typewriter/Typewriter.cs" id="1_nosgn"]
+[ext_resource type="AudioStream" uid="uid://bad66xln7ayva" path="res://Sfx/typewriter.wav" id="2_mxlls"]
+
+[node name="Typewriter" type="Node2D" node_paths=PackedStringArray("_typeTimer", "_delayTimer", "_audioStreamTypewriter")]
+script = ExtResource("1_nosgn")
+_typeTimer = NodePath("TypeTimer")
+_delayTimer = NodePath("DelayTimer")
+_audioStreamTypewriter = NodePath("AudioStreamTypewriter")
+
+[node name="TypeTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="DelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamTypewriter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mxlls")
+
+[connection signal="timeout" from="TypeTimer" to="." method="OnTypeTimerTimeout"]
+[connection signal="timeout" from="DelayTimer" to="." method="OnDelaytimerTimeout"]

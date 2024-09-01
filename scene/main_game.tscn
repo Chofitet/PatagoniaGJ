@@ -787,10 +787,9 @@ uv1_scale = Vector3(6.565, 2.045, 2.045)
 [sub_resource type="ViewportTexture" id="ViewportTexture_67fqk"]
 viewport_path = NodePath("StormController/SpriteWindow/SubViewport")
 
-[sub_resource type="Animation" id="Animation_kbi2g"]
-resource_name = "idle_anim"
-length = 5.0
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_n62gv"]
+resource_name = "LeftMoveAnim"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -798,10 +797,10 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1.9, 3.66667),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat32Array(0, 0.266667, 1.2),
+"transitions": PackedFloat32Array(1, 2, 0.142705),
 "update": 0,
-"values": [Vector3(0, 0, 0.0372104), Vector3(0, 0, -0.0366519)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.174533), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_f4s6i"]
@@ -835,9 +834,10 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -0.174533), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_n62gv"]
-resource_name = "LeftMoveAnim"
-length = 1.2
+[sub_resource type="Animation" id="Animation_kbi2g"]
+resource_name = "idle_anim"
+length = 5.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -845,10 +845,10 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667, 1.2),
-"transitions": PackedFloat32Array(1, 2, 0.142705),
+"times": PackedFloat32Array(1.9, 3.66667),
+"transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.174533), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0.0372104), Vector3(0, 0, -0.0366519)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3drr5"]
