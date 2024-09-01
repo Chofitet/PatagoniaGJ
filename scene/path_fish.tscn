@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvyd0s1qjyluu"]
+
+[ext_resource type="PackedScene" uid="uid://dpx5sr65gdlqk" path="res://scene/fish.tscn" id="1_n5oas"]
+
+[sub_resource type="Curve2D" id="Curve2D_04r4e"]
+_data = {
+"points": PackedVector2Array(2, -138, -2, 138, -57, 112, 0, 0, 0, 0, 4.48897, 230, -92.2912, -18.7035, 92.2912, 18.7035, 291.028, 113, -204.309, 2.86476, 204.309, -2.86476, 616.919, 217, -156.198, -66.2074, 156.198, 66.2074, 985.853, 157, -67.2271, -3.2526, 67.2271, 3.2526, 1191.84, 185)
+}
+point_count = 6
+
+[sub_resource type="Animation" id="Animation_6j7wp"]
+length = 11.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(35.6995, 926)]
+}
+
+[sub_resource type="Animation" id="Animation_chkwu"]
+resource_name = "first_follow"
+length = 11.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollowFish:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(35.6995, -161), Vector2(35.6995, 903)]
+}
+
+[sub_resource type="Animation" id="Animation_2gr80"]
+resource_name = "second_follow"
+length = 11.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollowFish:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(35.6995, -161), Vector2(35.6995, 926)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tx1qm"]
+_data = {
+"RESET": SubResource("Animation_6j7wp"),
+"first_follow": SubResource("Animation_chkwu"),
+"second_follow": SubResource("Animation_2gr80")
+}
+
+[node name="PathFish" type="Path2D"]
+position = Vector2(35.6995, 926)
+scale = Vector2(1.62631, 1)
+curve = SubResource("Curve2D_04r4e")
+
+[node name="PathFollowFish" type="PathFollow2D" parent="."]
+position = Vector2(433.639, 183.946)
+rotation = 0.430663
+progress = 626.708
+
+[node name="Fish" parent="PathFollowFish" instance=ExtResource("1_n5oas")]
+scale = Vector2(0.3, 0.3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tx1qm")
+}

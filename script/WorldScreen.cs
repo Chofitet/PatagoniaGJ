@@ -1,10 +1,24 @@
 using Godot;
+using Godot.Collections;
 
 public partial class WorldScreen : Node3D
 {
 	[Export] private Node3D _cameraController = null;
-
 	[Export] private float _accelerate = 0.8f;
+	[Export] private Array<Sprite3D> _fishArray = new Array<Sprite3D>();
+
+    public override void _Ready()
+    {
+        RandomFish();
+    }
+
+    private void RandomFish()
+	{
+		GD.Randomize();
+
+		Sprite3D fish = _fishArray.PickRandom();
+		GD.Print($"Fish: {fish.Name}");
+	}
 
 	public void ApplyAccelerationCamera(double delta)
 	{

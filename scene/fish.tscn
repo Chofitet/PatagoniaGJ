@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpx5sr65gdlqk"]
+
+[ext_resource type="Texture2D" uid="uid://bfhnrsleax8j8" path="res://sprite/Hake/Pez_Merluza_Negra_1.png" id="1_ls8tb"]
+[ext_resource type="Texture2D" uid="uid://caddlfivwcltk" path="res://sprite/Hake/Pez_Merluza_Negra_2.png" id="2_a2okm"]
+[ext_resource type="Texture2D" uid="uid://c0ent1yn7nv0a" path="res://sprite/Hake/Pez_Merluza_Negra_3.png" id="3_ldb4s"]
+[ext_resource type="Texture2D" uid="uid://brf4o02l1l36q" path="res://sprite/Hake/Pez_Merluza_Negra_4.png" id="4_4ib0d"]
+[ext_resource type="Texture2D" uid="uid://cmg6i3hah28nk" path="res://sprite/Hake/Pez_Merluza_Negra_5.png" id="5_cj0ve"]
+[ext_resource type="Texture2D" uid="uid://bi5501k6ei6ed" path="res://sprite/Hake/Pez_Merluza_Negra_6.png" id="6_a232e"]
+[ext_resource type="Texture2D" uid="uid://bpyef8ew447uc" path="res://sprite/Hake/Pez_Merluza_Negra_7.png" id="7_iyl40"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1w028"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ls8tb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_a2okm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ldb4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4ib0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cj0ve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a232e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_iyl40")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a232e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cj0ve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4ib0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ldb4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_a2okm")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 8.0
+}]
+
+[node name="Fish" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_1w028")
+animation = &"Move"
+frame_progress = 0.636175

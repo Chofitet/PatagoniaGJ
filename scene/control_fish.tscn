@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb4qor4ha01u8"]
+
+[ext_resource type="Texture2D" uid="uid://6mg8idktc57o" path="res://icon.svg" id="1_wfu7r"]
+[ext_resource type="PackedScene" uid="uid://dvyd0s1qjyluu" path="res://scene/path_fish.tscn" id="2_nuy1y"]
+
+[node name="ControlFish" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wfu7r")
+expand_mode = 1
+
+[node name="PathFish" parent="." instance=ExtResource("2_nuy1y")]
+
+[node name="PathFollowFish" parent="PathFish" index="0"]
+position = Vector2(-57, 112)
+rotation = 1.58529
+progress = 0.0
+
+[node name="Fish" parent="PathFish/PathFollowFish" index="0"]
+autoplay = "Move"
+
+[node name="AnimationPlayer" parent="PathFish" index="1"]
+autoplay = "first_follow"
+
+[editable path="PathFish"]
