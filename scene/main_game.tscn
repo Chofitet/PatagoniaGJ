@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://c5ekqkaxtqetf"]
+[gd_scene load_steps=72 format=4 uid="uid://c5ekqkaxtqetf"]
 
 [ext_resource type="Script" path="res://script/GameManager.cs" id="1_4u7d0"]
 [ext_resource type="PackedScene" uid="uid://cbscsjnfph22k" path="res://scene/rudder.tscn" id="1_wmwm1"]
@@ -6,7 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://bgidq0m2k3tuw" path="res://model/Tablero_Untitled.png" id="4_2f0mv"]
 [ext_resource type="PackedScene" uid="uid://dougrx573rp4j" path="res://MapDrawer/map_ui.tscn" id="4_kp4aw"]
 [ext_resource type="Texture2D" uid="uid://bvc3arjc35dax" path="res://model/Tablero_Untitled_1.png" id="5_f00c0"]
+[ext_resource type="Texture2D" uid="uid://ciqb5kn265blk" path="res://model/metal-texture-background-yyz4p6nroq1vjqw4.jpg" id="5_g84a0"]
 [ext_resource type="Texture2D" uid="uid://dy5tfaj1nnqj1" path="res://model/Tablero_Untitled_2.png" id="6_bhifn"]
+[ext_resource type="Material" uid="uid://ctqhcr6hta3rq" path="res://model/manija.tres" id="6_sswrk"]
+[ext_resource type="Material" uid="uid://bwohfvip0yfj4" path="res://model/chapa.tres" id="7_1axhf"]
+[ext_resource type="PackedScene" uid="uid://cbrfmj7dhff0r" path="res://StormController/WindowController/control_window.tscn" id="8_ir4mb"]
+[ext_resource type="Texture2D" uid="uid://c2ldwwukan8ri" path="res://model/old-wood-texture-with-weathered-green-paint_13756-27.jpg" id="9_pty2o"]
+[ext_resource type="Material" uid="uid://df7envwjc6jo" path="res://scene/pantalla.tres" id="10_pdt1o"]
+[ext_resource type="Script" path="res://StormController/storm_controller.gd" id="14_rtf2g"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eqlmm"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -17,12 +24,10 @@ sky_material = SubResource("ProceduralSkyMaterial_eqlmm")
 
 [sub_resource type="Environment" id="Environment_nt3rd"]
 background_mode = 2
+background_energy_multiplier = 0.0
 sky = SubResource("Sky_dod36")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_o6uoa"]
-viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vvi0q"]
 resource_name = "Material.001"
@@ -134,6 +139,10 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mdcqn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bqsft"]
+albedo_color = Color(0.600349, 0.000276944, 0.604258, 1)
+albedo_texture = ExtResource("5_g84a0")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8x8ce"]
 _surfaces = [{
@@ -781,6 +790,21 @@ shadow_mesh = SubResource("ArrayMesh_antb1")
 [sub_resource type="ViewportTexture" id="ViewportTexture_4mfcs"]
 viewport_path = NodePath("objects/Map2d/MapViewPort")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_o6uoa"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60ebu"]
+albedo_color = Color(0.357452, 0.611377, 0.756324, 1)
+albedo_texture = ExtResource("9_pty2o")
+metallic_specular = 0.6
+uv1_scale = Vector3(2.48, 2.48, 2.48)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jy3aj"]
+material = SubResource("StandardMaterial3D_60ebu")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_67fqk"]
+viewport_path = NodePath("StormController/SpriteWindow/SubViewport")
+
 [node name="MainGame" type="Node3D"]
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("_rudder", "_worldScreen")]
@@ -789,15 +813,12 @@ _rudder = NodePath("../objects/Rudder")
 _worldScreen = NodePath("../SubViewport/WorldScreen")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 0.982723, 0.185083, 0, -0.185083, 0.982723, 0, 0.241526, 4.12531)
 current = true
+fov = 65.7
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nt3rd")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 1.88464)
-shadow_enabled = true
 
 [node name="SubViewport" type="SubViewport" parent="."]
 own_world_3d = true
@@ -805,13 +826,10 @@ size_2d_override_stretch = true
 render_target_update_mode = 4
 
 [node name="WorldScreen" parent="SubViewport" instance=ExtResource("2_6hoob")]
-
-[node name="CamViewport" type="Sprite3D" parent="."]
-transform = Transform3D(0.229875, 0, 0, 0, 0.229875, 0, 0, 0, 0.75, 0.344395, -0.302369, 2.31634)
-texture = SubResource("ViewportTexture_o6uoa")
+_accelerate = 0.6
 
 [node name="objects" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.202247, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.202247, 0, 0.260692)
 
 [node name="Tablero" type="Node3D" parent="objects"]
 transform = Transform3D(-9.17939e-09, 0, -0.21, 0, 0.21, 0, 0.21, 0, -9.17939e-09, -0.554132, -1.19183, 1.68757)
@@ -822,7 +840,7 @@ mesh = SubResource("ArrayMesh_llfdb")
 skeleton = NodePath("")
 
 [node name="Cylinder" type="MeshInstance3D" parent="objects/Tablero"]
-transform = Transform3D(0.000831545, 0.783455, 0, -0.362325, 0.00179805, 0, 0, 0, 0.362148, 3.20988, 2.31317, -10.4012)
+transform = Transform3D(0.000851377, 0.802141, 0, -0.370967, 0.00184093, 0, -3.46945e-18, 0, 0.370785, 3.20988, 2.31317, -10.4012)
 visible = false
 mesh = SubResource("ArrayMesh_nvqux")
 skeleton = NodePath("")
@@ -832,6 +850,7 @@ transform = Transform3D(5.75887e-07, 1.6103, 0, -1.6103, 5.75887e-07, 0, 0, 0, 1
 visible = false
 mesh = SubResource("ArrayMesh_xboig")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_bqsft")
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="objects/Tablero"]
 transform = Transform3D(-7.66467e-06, -0.0244725, 0.215171, -0.215036, 0.00362574, -2.06049e-08, -0.000493429, -1.57971, -0.00333337, 4.41133, 2.29756, -10.4012)
@@ -852,47 +871,56 @@ mesh = SubResource("ArrayMesh_xacha")
 skeleton = NodePath("")
 
 [node name="Cylinder_004" type="MeshInstance3D" parent="objects/Tablero"]
-transform = Transform3D(0.0417195, 0.490995, 0, -0.0899196, 0.227804, 0, 0, 0, 0.0944172, 3.56235, 5.09938, -9.78631)
+transform = Transform3D(0.0417645, 0.491525, 8.88178e-16, -0.0900167, 0.22805, 0, -3.33067e-16, -3.55271e-15, 0.0945192, 3.56235, 5.09938, -9.78631)
+material_override = ExtResource("6_sswrk")
 mesh = SubResource("ArrayMesh_d6meb")
 skeleton = NodePath("")
 
 [node name="Cube_006" type="MeshInstance3D" parent="objects/Tablero"]
 transform = Transform3D(0.361031, 0, 0, 0, 0.361031, 0, 0, 0, 0.361031, 4.22777, 5.4031, -9.79916)
+material_override = ExtResource("6_sswrk")
 mesh = SubResource("ArrayMesh_ln0xy")
 skeleton = NodePath("")
 
 [node name="Cylinder_005" type="MeshInstance3D" parent="objects/Tablero"]
 transform = Transform3D(0.000574623, 1.13108, 0, -0.250378, 0.00259586, 0, 0, 0, 0.250245, 2.17558, 6.52802, -9.77888)
+material_override = ExtResource("6_sswrk")
 mesh = SubResource("ArrayMesh_14qa8")
 skeleton = NodePath("")
 
 [node name="Cube" type="MeshInstance3D" parent="objects/Tablero"]
 transform = Transform3D(3.15772, 0, 0, 0, 2.01631, 0, 0, 0, 4.5676, -1.3231, 6.48693, -2.82464)
+material_override = ExtResource("7_1axhf")
 mesh = SubResource("ArrayMesh_xueyg")
 skeleton = NodePath("")
 
 [node name="Cube_001" type="MeshInstance3D" parent="objects/Tablero"]
 transform = Transform3D(0.522727, 0, 0, 0, 0.584862, 0, 0, 0, 0.584862, 2.47874, 2.32758, -10.4116)
+visible = false
 mesh = SubResource("ArrayMesh_n0iuv")
 skeleton = NodePath("")
 
 [node name="Cylinder_006" type="MeshInstance3D" parent="objects/Tablero"]
 transform = Transform3D(-7.66467e-06, -0.0244725, 0.215171, -0.215036, 0.00362574, -2.06049e-08, -0.000493429, -1.57971, -0.00333337, 2.51556, 3.31737, -1.95148)
+material_override = ExtResource("6_sswrk")
 mesh = SubResource("ArrayMesh_63wit")
 skeleton = NodePath("")
 
 [node name="Cylinder_007" type="MeshInstance3D" parent="objects/Tablero"]
 transform = Transform3D(-7.66467e-06, -0.0244725, 0.215171, -0.215036, 0.00362574, -2.06049e-08, -0.000493429, -1.57971, -0.00333337, 2.56921, 1.72563, -1.95148)
+material_override = ExtResource("6_sswrk")
 mesh = SubResource("ArrayMesh_qyl0i")
 skeleton = NodePath("")
 
 [node name="Cylinder_009" type="MeshInstance3D" parent="objects/Tablero"]
 transform = Transform3D(-7.66467e-06, -0.0244725, 0.215171, -0.215036, 0.00362574, -2.06049e-08, -0.000493429, -1.57971, -0.00333337, 2.51556, 6.80103, -7.807)
+material_override = ExtResource("6_sswrk")
 mesh = SubResource("ArrayMesh_gebk5")
 skeleton = NodePath("")
 
 [node name="Cylinder_010" type="MeshInstance3D" parent="objects/Tablero"]
 transform = Transform3D(-7.66467e-06, -0.0244725, 0.215171, -0.215036, 0.00362574, -2.06049e-08, -0.000493429, -1.57971, -0.00333337, 2.56921, 5.20929, -7.807)
+material_override = ExtResource("6_sswrk")
 mesh = SubResource("ArrayMesh_hbnpf")
 skeleton = NodePath("")
 
@@ -917,17 +945,20 @@ mesh = SubResource("ArrayMesh_mduq1")
 skeleton = NodePath("")
 
 [node name="Cube_002" type="MeshInstance3D" parent="objects/Tablero"]
-transform = Transform3D(1.12384, 0, 0, 0, 1.3855, 0, 0, 0, 3.22063, 0.772799, 5.88536, 1.41807)
+transform = Transform3D(1.12505, 0, 2.84217e-14, 0, 1.387, 0, -7.10543e-15, 0, 3.2241, 0.772799, 5.88537, 1.41807)
+material_override = ExtResource("10_pdt1o")
 mesh = SubResource("ArrayMesh_gjb26")
 skeleton = NodePath("")
 
 [node name="Cube_003" type="MeshInstance3D" parent="objects/Tablero"]
 transform = Transform3D(2.05946, 0, 0, 0, 3.10581, 0, 0, 0, 3.10581, 0.927143, 4.18467, -5.18843)
+material_override = ExtResource("10_pdt1o")
 mesh = SubResource("ArrayMesh_6u2is")
 skeleton = NodePath("")
 
 [node name="Cube_008" type="MeshInstance3D" parent="objects/Tablero"]
 transform = Transform3D(1.12384, 0, 0, 0, 1.3855, 0, 0, 0, 2.62657, 1.828, 2.47582, 0.854751)
+material_override = ExtResource("10_pdt1o")
 mesh = SubResource("ArrayMesh_14rnw")
 skeleton = NodePath("")
 
@@ -936,6 +967,8 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 0.221, -0
 
 [node name="Sprite3D" type="Sprite3D" parent="objects/Map2d"]
 transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0.0197814, -0.0197814, 0)
+flip_h = true
+flip_v = true
 texture = SubResource("ViewportTexture_4mfcs")
 
 [node name="MapViewPort" type="SubViewport" parent="objects/Map2d"]
@@ -946,7 +979,46 @@ texture_repeat = 2
 LineReposition = 150.0
 
 [node name="Rudder" parent="objects" instance=ExtResource("1_wmwm1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.64384, -0.727927, 2.16666)
+transform = Transform3D(0.832935, 0.0486822, -0.336873, 3.35201e-09, 0.890546, 0.128695, 0.340373, -0.119132, 0.824372, 1.61103, -0.65045, 2.12392)
+
+[node name="CamViewport" type="Sprite3D" parent="objects"]
+transform = Transform3D(0.229875, 0, 0, 0, 0.229875, 0, 0, 0, 0.75, 0.546642, -0.302369, 2.31634)
+texture = SubResource("ViewportTexture_o6uoa")
+
+[node name="Wall1" type="MeshInstance3D" parent="objects"]
+transform = Transform3D(0.279775, -0.00801374, -1.02528, 0.00118604, 2.71102, 0.0059549, 0.107056, -0.00909177, 2.67935, -1.83212, 0.313847, 1.91785)
+mesh = SubResource("BoxMesh_jy3aj")
+
+[node name="Wall2" type="MeshInstance3D" parent="objects"]
+transform = Transform3D(0.279664, 0, 1.02809, 0, 2.71104, 0, -0.107353, 0, 2.67827, 2.08421, 0.313847, 1.91785)
+mesh = SubResource("BoxMesh_jy3aj")
+
+[node name="Wall3" type="MeshInstance3D" parent="objects"]
+transform = Transform3D(-1.30942e-08, 0, 2.94626, 0, 2.71104, 0, -0.299561, 0, -1.28785e-07, 0.316363, 1.92357, 0.79809)
+mesh = SubResource("BoxMesh_jy3aj")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.992305, 0.001567, 0.000196045, -0.00116864, 0.645787, 0.753412, 0.00106217, -0.753411, 0.645788, -0.140385, 2.40225, 4.23306)
+light_color = Color(0.901032, 0.90508, 0.988427, 1)
+light_energy = 0.869
+light_size = 0.205
+light_specular = 0.762
+spot_attenuation = 0.38
+
+[node name="StormController" type="Node3D" parent="."]
+script = ExtResource("14_rtf2g")
+
+[node name="SpriteWindow" type="Sprite3D" parent="StormController"]
+transform = Transform3D(0.15067, 0, 0, 0, 0.15067, 0, 0, 0, -2.78617, -0.110629, 0.961462, 1.23373)
+texture = SubResource("ViewportTexture_67fqk")
+
+[node name="SubViewport" type="SubViewport" parent="StormController/SpriteWindow"]
+size = Vector2i(1841, 532)
+
+[node name="ControlWindow" parent="StormController/SpriteWindow/SubViewport" instance=ExtResource("8_ir4mb")]
+
+[node name="Timer" type="Timer" parent="StormController"]
+autostart = true
 
 [connection signal="NewColliderPoint" from="SubViewport/WorldScreen/CameraController/DrawMeshRayCast3D" to="objects/Map2d/MapViewPort/MapUI" method="RefreshLine"]
 [connection signal="OnLimit" from="SubViewport/WorldScreen/CameraController/DetectRigthPathRayCastD2" to="SubViewport/WorldScreen" method="TransportToLastCheckCollider"]

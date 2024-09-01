@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dcc2cnspull21"]
+[gd_scene load_steps=16 format=3 uid="uid://dcc2cnspull21"]
 
 [ext_resource type="PackedScene" uid="uid://biqsdpxiniuh2" path="res://model/Isla_Submarina.glb" id="1_b0vmd"]
 [ext_resource type="Script" path="res://script/WorldScreen.cs" id="1_qqt5l"]
 [ext_resource type="Texture2D" uid="uid://6mg8idktc57o" path="res://icon.svg" id="2_vvqv7"]
 [ext_resource type="PackedScene" uid="uid://bqrjkylgm5rvb" path="res://MapDrawer/draw_mesh_ray_cast_3d.tscn" id="3_co7cr"]
+[ext_resource type="Shader" path="res://shader/under_water.gdshader" id="3_qrlw1"]
 [ext_resource type="PackedScene" uid="uid://crpy1o55lqirx" path="res://RigthPathDetector/detect_rigth_path_ray_cast.tscn" id="4_a3l3x"]
 [ext_resource type="Script" path="res://RigthPathDetector/rigth_path_manager.gd" id="6_s17wd"]
 [ext_resource type="PackedScene" uid="uid://jckg1ixi2u0b" path="res://RigthPathDetector/rigth_path_collider.tscn" id="7_nkkh8"]
@@ -13,6 +14,19 @@
 [sub_resource type="Environment" id="Environment_c3fce"]
 background_mode = 2
 background_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6nury"]
+render_priority = 0
+shader = ExtResource("3_qrlw1")
+shader_parameter/tint = Color(0.712228, 0.915314, 0.995076, 1)
+shader_parameter/wave_speed = 1.5
+shader_parameter/wave_freq = 3.0
+shader_parameter/wave_width = 1.0
+shader_parameter/blur = 0.1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3cu5t"]
+material = SubResource("ShaderMaterial_6nury")
+size = Vector2(1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6l75r"]
 
@@ -57,6 +71,11 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 environment = SubResource("Environment_c3fce")
 fov = 50.0
 metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CameraController/FirstScreen"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.26351e-08, -0.289057)
+mesh = SubResource("PlaneMesh_3cu5t")
+skeleton = NodePath("../../..")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CameraController"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)

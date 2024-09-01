@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ctqhcr6hta3rq"]
+
+[ext_resource type="Texture2D" uid="uid://cmemojdok73hi" path="res://model/38ebb6_0400bd1e05194aef90ad7240d494682b~mv2.jpg" id="1_qho2t"]
+
+[resource]
+albedo_color = Color(0.889076, 0.385343, 0.444298, 1)
+albedo_texture = ExtResource("1_qho2t")
+metallic = 1.0
+metallic_specular = 0.27
+roughness = 0.61
+uv1_scale = Vector3(7.05, 7.05, 7.05)
+uv1_offset = Vector3(1.5, 0, 0)

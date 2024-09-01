@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bwohfvip0yfj4"]
+
+[ext_resource type="Texture2D" uid="uid://brrig10t3ymel" path="res://model/metal-texture-seamless-pattern-with-sample-swatches-panel-steel-surface-background_153629-56.jpg" id="1_rb44d"]
+
+[resource]
+albedo_color = Color(0.868985, 0.868985, 0.868985, 1)
+albedo_texture = ExtResource("1_rb44d")
+metallic = 0.31
+metallic_specular = 0.61
+uv1_scale = Vector3(-9.965, -9.965, -9.965)

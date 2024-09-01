@@ -1,0 +1,343 @@
+[gd_scene load_steps=14 format=3 uid="uid://cbrfmj7dhff0r"]
+
+[ext_resource type="Texture2D" uid="uid://sxhijcm2a87r" path="res://StormController/WindowController/Cielo_Movido.png" id="1_evip0"]
+[ext_resource type="Script" path="res://StormController/WindowController/control_window.gd" id="1_fc8fs"]
+[ext_resource type="Texture2D" uid="uid://ddnk57o5wlunn" path="res://StormController/WindowController/Mar_Movido_1.png" id="1_tfrg5"]
+[ext_resource type="Texture2D" uid="uid://ccd66rnutm3o7" path="res://StormController/WindowController/Cielo_Tranqui.png" id="2_581e2"]
+[ext_resource type="Texture2D" uid="uid://dc01yveagd7qh" path="res://StormController/WindowController/Mar_Movido_2.png" id="2_ruo5r"]
+[ext_resource type="Texture2D" uid="uid://byj8mte5qwmhe" path="res://StormController/WindowController/Mar_Movido_3.png" id="3_xk8p7"]
+[ext_resource type="Texture2D" uid="uid://cg2julfggetc0" path="res://StormController/WindowController/Ola_Mar.png" id="5_wr3c0"]
+
+[sub_resource type="Animation" id="Animation_f7b8j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("wave1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(969.5, 401)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("wave1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("wave1:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("wave2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(969.5, 332)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("wave2:skew")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("wave3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(975.5, 263)]
+}
+
+[sub_resource type="Animation" id="Animation_2gq82"]
+resource_name = "idle_see"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("wave1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 3),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(906, 401), Vector2(1017, 401)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("wave1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.00872665, 0.00872665, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("wave1:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.0, 0.174533, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("wave2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1017, 332), Vector2(906, 332)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("wave2:skew")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.174533, 0.0, -0.174533, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("wave3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.03333, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(906, 263), Vector2(1017, 263)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uf3lj"]
+_data = {
+"RESET": SubResource("Animation_f7b8j"),
+"idle_see": SubResource("Animation_2gq82")
+}
+
+[sub_resource type="Animation" id="Animation_s4oky"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotOlas/olas:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1272, 278)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotOlas/olas:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PivotOlas/olas:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0436332]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CieloMovido:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x5ikj"]
+resource_name = "olasGrandes"
+length = 5.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotOlas/olas:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.8, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1217, 256), Vector2(1389, 274)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotOlas/olas:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8, 1.43333, 2.06667, 2.66667, 3.63333, 4.3, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PivotOlas/olas:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.06667, 2.66667, 4.46667),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [0.0436332, 0.0820305, 0.0436332]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CieloMovido:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.43333, 4.93333, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aqawq"]
+_data = {
+"RESET": SubResource("Animation_s4oky"),
+"olasGrandes": SubResource("Animation_x5ikj")
+}
+
+[node name="ControlWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 3.0
+script = ExtResource("1_fc8fs")
+
+[node name="CieloTranqui" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(953, 333)
+scale = Vector2(0.893048, 0.893048)
+texture = ExtResource("2_581e2")
+
+[node name="CieloMovido" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+z_index = -3
+position = Vector2(993, 302)
+texture = ExtResource("1_evip0")
+
+[node name="wave3" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(975.5, 263)
+texture = ExtResource("3_xk8p7")
+
+[node name="wave2" type="Sprite2D" parent="."]
+position = Vector2(969.5, 332)
+texture = ExtResource("2_ruo5r")
+
+[node name="PivotOlas" type="Node2D" parent="."]
+position = Vector2(886, 1)
+
+[node name="olas" type="Node2D" parent="PivotOlas"]
+position = Vector2(-1272, 278)
+rotation = -0.0436332
+
+[node name="OlaMar2" type="Sprite2D" parent="PivotOlas/olas"]
+z_index = -1
+position = Vector2(-30.514, -154)
+scale = Vector2(1.00398, 1.00398)
+texture = ExtResource("5_wr3c0")
+
+[node name="OlaMar3" type="Sprite2D" parent="PivotOlas/olas"]
+z_index = -1
+position = Vector2(-134.976, -95.2031)
+scale = Vector2(1.00398, 1.00398)
+texture = ExtResource("5_wr3c0")
+
+[node name="OlaMar" type="Sprite2D" parent="PivotOlas/olas"]
+self_modulate = Color(0.67069, 0.67069, 0.67069, 1)
+position = Vector2(45.486, -84)
+scale = Vector2(1.24, 1.24)
+texture = ExtResource("5_wr3c0")
+
+[node name="wave1" type="Sprite2D" parent="."]
+position = Vector2(969.5, 401)
+texture = ExtResource("1_tfrg5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uf3lj")
+}
+autoplay = "idle_see"
+
+[node name="AnimatorOlas" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_aqawq")
+}

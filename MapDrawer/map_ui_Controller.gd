@@ -23,7 +23,7 @@ func RefreshLine(vector2):
 	
 	
 	if(rad_to_deg(angle) > 0):
-		BoatIcon.flip_v= true
-	else: BoatIcon.flip_v = false
+		BoatIcon.flip_v= false
+	else: BoatIcon.flip_v = true
 	
 	lastPoint = vectorPosition

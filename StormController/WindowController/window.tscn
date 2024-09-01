@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cij3o4gbh31ai"]
+
+[ext_resource type="PackedScene" uid="uid://cbrfmj7dhff0r" path="res://StormController/WindowController/control_window.tscn" id="1_bteut"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bw6sd"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Window" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0915814, 0.944671, 1.00302)
+texture = SubResource("ViewportTexture_bw6sd")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(831, 432)
+
+[node name="ControlWindow" parent="SubViewport" instance=ExtResource("1_bteut")]

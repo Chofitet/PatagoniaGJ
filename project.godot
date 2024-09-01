@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="PatagoniaGJ"
+run/main_scene="res://scene/main_menu.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
-
 
 [display]
 
@@ -32,3 +32,6 @@ RigthPath=""
 [rendering]
 
 textures/canvas_textures/default_texture_repeat=1
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
+environment/ssao/quality=3
+anti_aliasing/quality/msaa_3d=3

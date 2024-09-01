@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=4 uid="uid://cbscsjnfph22k"]
+[gd_scene load_steps=16 format=4 uid="uid://cbscsjnfph22k"]
 
 [ext_resource type="Script" path="res://script/Rudder.cs" id="1_ftidm"]
 [ext_resource type="Texture2D" uid="uid://bgidq0m2k3tuw" path="res://model/Tablero_Untitled.png" id="2_5xc2l"]
+[ext_resource type="Material" uid="uid://ctqhcr6hta3rq" path="res://model/manija.tres" id="2_j4aaj"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mkods"]
 
@@ -193,25 +194,30 @@ transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 
 
 [node name="Cylinder" type="MeshInstance3D" parent="Tablero"]
 transform = Transform3D(0.000831545, 0.783455, -5.32907e-15, -0.362325, 0.00179805, 0, 0, 0, 0.362148, 0.747422, -0.0197611, 0.0339883)
+material_override = ExtResource("2_j4aaj")
 mesh = SubResource("ArrayMesh_nvqux")
 skeleton = NodePath("")
 
 [node name="Torus" type="MeshInstance3D" parent="Tablero"]
-transform = Transform3D(5.75887e-07, 1.6103, -1.42109e-14, -1.6103, 5.75887e-07, 0, 3.38813e-21, 1.42109e-14, 1.6103, 1.98231, -0.030046, 0.0184682)
+transform = Transform3D(5.7702e-07, 1.61347, -1.42109e-14, -1.61347, 5.7702e-07, 0, 6.77626e-21, 1.42109e-14, 1.61347, 1.98231, -0.030046, 0.0184682)
 mesh = SubResource("ArrayMesh_xboig")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_j4aaj")
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="Tablero"]
 transform = Transform3D(-7.66467e-06, -0.0244725, 0.215171, -0.215036, 0.00362574, -2.06049e-08, -0.000493429, -1.57971, -0.00333337, 1.94888, -0.0353647, 0.0339883)
+material_override = ExtResource("2_j4aaj")
 mesh = SubResource("ArrayMesh_b67oc")
 skeleton = NodePath("")
 
 [node name="Cylinder_002" type="MeshInstance3D" parent="Tablero"]
 transform = Transform3D(-7.69031e-06, -0.0108399, 0.21515, 5.61068e-05, -0.699725, -0.00333303, 0.215037, 0.000182183, 8.56401e-06, 1.94888, -0.753873, 0.0339883)
+material_override = ExtResource("2_j4aaj")
 mesh = SubResource("ArrayMesh_1bstr")
 skeleton = NodePath("")
 
 [node name="Cylinder_003" type="MeshInstance3D" parent="Tablero"]
 transform = Transform3D(0.0010346, 0.494604, -3.55271e-15, -0.4508, 0.00113513, 0, 0, 3.55271e-15, 0.45058, 1.96448, -0.0197611, 0.0339883)
+material_override = ExtResource("2_j4aaj")
 mesh = SubResource("ArrayMesh_xacha")
 skeleton = NodePath("")
