@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://ippxysfy8s8i"]
+
+[ext_resource type="Script" path="res://script/SoundController.gd" id="1_nc7ps"]
+[ext_resource type="AudioStream" uid="uid://ts8r8sedkp38" path="res://Music/MenuMusic.mp3" id="2_oq5iu"]
+[ext_resource type="AudioStream" uid="uid://ehbywklxk7x7" path="res://Music/GameMusicc.mp3" id="3_461np"]
+[ext_resource type="AudioStream" uid="uid://jwp4caskdaxe" path="res://Music/Seagull_wave.mp3" id="4_xdwkg"]
+
+[node name="AudioManager" type="Node3D"]
+script = ExtResource("1_nc7ps")
+
+[node name="menuMusic" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_oq5iu")
+
+[node name="GameMusic" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_461np")
+
+[node name="OceanAndBirds" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_xdwkg")

@@ -110,8 +110,9 @@ scale = Vector2(0.8, 0.8)
 curve = SubResource("Curve2D_uybek")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2(-162, 25)
-rotation = 0.634023
+position = Vector2(1288, 47)
+rotation = -0.920375
+progress = 2055.25
 
 [node name="fish" type="AnimatedSprite2D" parent="PathFollow2D"]
 scale = Vector2(0.4, 0.4)
