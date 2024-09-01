@@ -18,5 +18,9 @@ func SetStorm():
 		controlWindow.RigthWaves()
 		direction = 1
 	
+	OnSetStorm.emit(direction)
+	get_tree().create_timer(0.5).timeout
+	OnSetStorm.emit(direction)
+	
 	LastDirection = direction
 	

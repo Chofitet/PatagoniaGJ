@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cnmhcb75w6glt"]
+[gd_scene load_steps=15 format=3 uid="uid://dht5i0htkdb1y"]
 
 [ext_resource type="Script" path="res://script/WorldScreen.cs" id="1_dkjfh"]
-[ext_resource type="PackedScene" uid="uid://cb4qor4ha01u8" path="res://scene/control_fish.tscn" id="2_754ge"]
+[ext_resource type="PackedScene" uid="uid://cgsjy6peh4ral" path="res://scene/control_fish.tscn" id="2_754ge"]
 [ext_resource type="PackedScene" uid="uid://bqrjkylgm5rvb" path="res://MapDrawer/draw_mesh_ray_cast_3d.tscn" id="3_ulld7"]
 [ext_resource type="PackedScene" uid="uid://crpy1o55lqirx" path="res://RigthPathDetector/detect_rigth_path_ray_cast.tscn" id="4_bpgxu"]
 [ext_resource type="PackedScene" uid="uid://biqsdpxiniuh2" path="res://model/Isla_Submarina.glb" id="5_n4dhd"]
@@ -26,10 +26,9 @@ _data = {
 }
 point_count = 1
 
-[node name="WorldScreen" type="Node3D" node_paths=PackedStringArray("_cameraController", "_fishArray")]
+[node name="WorldScreen" type="Node3D" node_paths=PackedStringArray("_cameraController")]
 script = ExtResource("1_dkjfh")
 _cameraController = NodePath("CameraController")
-_fishArray = [NodePath("Path3D/PathFollow3D/Fish")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

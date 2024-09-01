@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dougrx573rp4j"]
+[gd_scene load_steps=6 format=3 uid="uid://dougrx573rp4j"]
 
 [ext_resource type="Script" path="res://MapDrawer/map_ui_Controller.gd" id="1_w372n"]
 [ext_resource type="Texture2D" uid="uid://b4v05uvbvm8tm" path="res://MapDrawer/PointingLine.png" id="2_51jgf"]
+[ext_resource type="Material" uid="uid://r1xncg4res7h" path="res://shader/Screen_VHS_Effect.tres" id="2_oay72"]
 [ext_resource type="Texture2D" uid="uid://dkrce8ed2t3tn" path="res://MapDrawer/Boat_Icon.png" id="3_qbnti"]
+[ext_resource type="Texture2D" uid="uid://6mg8idktc57o" path="res://icon.svg" id="5_tr5sv"]
 
 [node name="MapUI" type="Control"]
 layout_mode = 3
@@ -39,3 +41,15 @@ position = Vector2(-1283, -2468)
 scale = Vector2(1.91862, 1.91862)
 texture = ExtResource("3_qbnti")
 offset = Vector2(-90.065, 0)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = ExtResource("2_oay72")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1392.0
+offset_bottom = -4356.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_tr5sv")

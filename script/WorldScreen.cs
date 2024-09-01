@@ -7,12 +7,12 @@ public partial class WorldScreen : Node3D
 	[Export] private float _accelerate = 0.8f;
 	[Export] private Array<Sprite3D> _fishArray = new Array<Sprite3D>();
 
-    public override void _Ready()
-    {
-        RandomFish();
-    }
+	public override void _Ready()
+	{
+		RandomFish();
+	}
 
-    private void RandomFish()
+	private void RandomFish()
 	{
 		GD.Randomize();
 

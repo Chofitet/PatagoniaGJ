@@ -1,8 +1,9 @@
-[gd_scene load_steps=72 format=4 uid="uid://c5ekqkaxtqetf"]
+[gd_scene load_steps=73 format=4 uid="uid://c5ekqkaxtqetf"]
 
 [ext_resource type="Script" path="res://script/GameManager.cs" id="1_4u7d0"]
 [ext_resource type="PackedScene" uid="uid://cbscsjnfph22k" path="res://scene/rudder.tscn" id="1_wmwm1"]
 [ext_resource type="PackedScene" uid="uid://dcc2cnspull21" path="res://scene/world_screen.tscn" id="2_6hoob"]
+[ext_resource type="Script" path="res://script/BoatRotation.gd" id="3_b3m73"]
 [ext_resource type="Texture2D" uid="uid://bgidq0m2k3tuw" path="res://model/Tablero_Untitled.png" id="4_2f0mv"]
 [ext_resource type="PackedScene" uid="uid://dougrx573rp4j" path="res://MapDrawer/map_ui.tscn" id="4_kp4aw"]
 [ext_resource type="Texture2D" uid="uid://bvc3arjc35dax" path="res://model/Tablero_Untitled_1.png" id="5_f00c0"]
@@ -387,43 +388,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_w4axd")
 
+[sub_resource type="BoxMesh" id="BoxMesh_emotx"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3iapo"]
 resource_name = "Cont_Textura"
 cull_mode = 2
 albedo_texture = ExtResource("6_bhifn")
 roughness = 0.5
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_aoym6"]
-_surfaces = [{
-"aabb": AABB(-3.1149, -1, -1, 4.1149, 3.11524, 2),
-"format": 34896613377,
-"index_count": 42,
-"index_data": PackedByteArray("AAADAAEAAAACAAMAAgAHAAMAAgAGAAcABgAFAAcABgAEAAUABAABAAUABAAAAAEAAgAEAAYAAgAAAAQABwABAAMABwAFAAEABwAIAAUABwAJAAgA"),
-"name": "Cont_Textura",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 10,
-"vertex_data": PackedByteArray("koMAAP//AACSg1mk//8AAJKDAAAAAAAAkoNZpAAAAAD//wAA//8AAP//WaT//wAA//8AAAAAAAD//1mkAAAAAAAA/////wAAAAD//wAAAAA=")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_n0iuv"]
-resource_name = "Tablero_Cube"
-_surfaces = [{
-"aabb": AABB(-3.1149, -1, -1, 4.1149, 3.11524, 2),
-"attribute_data": PackedByteArray("SZ/YRvRQnipJn9hGkrf5S5K3+UuSt/lLD7BlKPRQZA5JnxSftct3PbK8FJ+1y3c9ujSeKkmfQWRJn0FkSwAMTLK8QWSyvEFksrxBZLo0ZA5Jn6uBSZ+rgYUcDEyyvKuBmdddWLK8q4FLADiIhRw4iA=="),
-"format": 34896613399,
-"index_count": 42,
-"index_data": PackedByteArray("AAAJAAMAAAAGAAkACAAXAAoACAAUABcAFQASABkAFQAOABIADQAEABAADQACAAQABwAMABMABwABAAwAGAAFAAsAGAARAAUAFgAaAA8AFgAbABoA"),
-"material": SubResource("StandardMaterial3D_3iapo"),
-"name": "Cont_Textura",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 28,
-"vertex_data": PackedByteArray("koMAAP//MeGSgwAA/////5KDAAD//wfHkoNZpP//ud2Sg1mk//+Dw5KDWaT//zHLkoMAAAAAvuSSgwAAAAD//5KDAAAAAP//koNZpAAAMeGSg1mkAAD//5KDWaQAANPK//8AAP///////wAA//+Dw///AAD//1TV//9ZpP//ztv//1mk////v///WaT//5DL//9ZpP//VNX//wAAAAD/////AAAAAP////8AAAAAVNX//1mkAADO2///WaQAAP////9ZpAAAMcv//1mkAABU1QAA/////87bAAD//wAAztsC4v3O/3//P/////+P3rfQ/////9HcpDlr5UnN/3//P/+//78C4v3O/7//vyvdWTr/f/8//////6oqqiq0UZVc/////3jc8jiqKqoq/3//P/+//7+qKqoqtFGVXP+//7/R3KQ5qiqqKrRRlVy0UZVc")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_aoym6")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6aigo"]
 _surfaces = [{
@@ -787,6 +758,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_antb1")
 
+[sub_resource type="BoxMesh" id="BoxMesh_1gl04"]
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_4mfcs"]
 viewport_path = NodePath("objects/Map2d/MapViewPort")
 
@@ -826,10 +799,11 @@ size_2d_override_stretch = true
 render_target_update_mode = 4
 
 [node name="WorldScreen" parent="SubViewport" instance=ExtResource("2_6hoob")]
-_accelerate = 0.6
+_accelerate = 0.4
 
 [node name="objects" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.202247, 0, 0.260692)
+script = ExtResource("3_b3m73")
 
 [node name="Tablero" type="Node3D" parent="objects"]
 transform = Transform3D(-9.17939e-09, 0, -0.21, 0, 0.21, 0, 0.21, 0, -9.17939e-09, -0.554132, -1.19183, 1.68757)
@@ -895,9 +869,9 @@ mesh = SubResource("ArrayMesh_xueyg")
 skeleton = NodePath("")
 
 [node name="Cube_001" type="MeshInstance3D" parent="objects/Tablero"]
-transform = Transform3D(0.522727, 0, 0, 0, 0.584862, 0, 0, 0, 0.584862, 2.47874, 2.32758, -10.4116)
-visible = false
-mesh = SubResource("ArrayMesh_n0iuv")
+transform = Transform3D(0.522727, 0, 0, 0, 1.66237, 0, 0, 0, 13.679, -3.60571, 12.7967, -3.29508)
+material_override = ExtResource("7_1axhf")
+mesh = SubResource("BoxMesh_emotx")
 skeleton = NodePath("")
 
 [node name="Cylinder_006" type="MeshInstance3D" parent="objects/Tablero"]
@@ -962,6 +936,9 @@ material_override = ExtResource("10_pdt1o")
 mesh = SubResource("ArrayMesh_14rnw")
 skeleton = NodePath("")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="objects/Tablero"]
+mesh = SubResource("BoxMesh_1gl04")
+
 [node name="Map2d" type="Node3D" parent="objects"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 0.221, -0.706251, -0.649021, 2.30883)
 
@@ -980,6 +957,7 @@ LineReposition = 150.0
 
 [node name="Rudder" parent="objects" instance=ExtResource("1_wmwm1")]
 transform = Transform3D(0.832935, 0.0486822, -0.336873, 3.35201e-09, 0.890546, 0.128695, 0.340373, -0.119132, 0.824372, 1.61103, -0.65045, 2.12392)
+_forceAdded = 30.0
 
 [node name="CamViewport" type="Sprite3D" parent="objects"]
 transform = Transform3D(0.229875, 0, 0, 0, 0.229875, 0, 0, 0, 0.75, 0.546642, -0.302369, 2.31634)
@@ -1013,7 +991,7 @@ transform = Transform3D(0.15067, 0, 0, 0, 0.15067, 0, 0, 0, -2.78617, -0.110629,
 texture = SubResource("ViewportTexture_67fqk")
 
 [node name="SubViewport" type="SubViewport" parent="StormController/SpriteWindow"]
-size = Vector2i(1841, 532)
+size = Vector2i(1986, 532)
 
 [node name="ControlWindow" parent="StormController/SpriteWindow/SubViewport" instance=ExtResource("8_ir4mb")]
 
@@ -1022,6 +1000,7 @@ autostart = true
 
 [connection signal="NewColliderPoint" from="SubViewport/WorldScreen/CameraController/DrawMeshRayCast3D" to="objects/Map2d/MapViewPort/MapUI" method="RefreshLine"]
 [connection signal="OnLimit" from="SubViewport/WorldScreen/CameraController/DetectRigthPathRayCastD2" to="SubViewport/WorldScreen" method="TransportToLastCheckCollider"]
+[connection signal="OnSetStorm" from="StormController" to="objects/Rudder" method="AddForce"]
 
 [editable path="SubViewport/WorldScreen"]
 [editable path="SubViewport/WorldScreen/Colliders/RigthPathManager/ColliderConteiner/RigthPathCollider"]

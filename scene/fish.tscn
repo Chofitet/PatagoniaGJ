@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpx5sr65gdlqk"]
+[gd_scene load_steps=9 format=3 uid="uid://cib7jxblqi837"]
 
 [ext_resource type="Texture2D" uid="uid://bfhnrsleax8j8" path="res://sprite/Hake/Pez_Merluza_Negra_1.png" id="1_ls8tb"]
 [ext_resource type="Texture2D" uid="uid://caddlfivwcltk" path="res://sprite/Hake/Pez_Merluza_Negra_2.png" id="2_a2okm"]
@@ -53,6 +53,7 @@ animations = [{
 }]
 
 [node name="Fish" type="AnimatedSprite2D"]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_1w028")
 animation = &"Move"
 frame_progress = 0.636175

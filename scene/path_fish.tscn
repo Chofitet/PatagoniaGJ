@@ -1,12 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvyd0s1qjyluu"]
+[gd_scene load_steps=7 format=3 uid="uid://3ndkduaa1v4f"]
 
-[ext_resource type="PackedScene" uid="uid://dpx5sr65gdlqk" path="res://scene/fish.tscn" id="1_n5oas"]
+[ext_resource type="PackedScene" uid="uid://cib7jxblqi837" path="res://scene/fish.tscn" id="1_n5oas"]
 
 [sub_resource type="Curve2D" id="Curve2D_04r4e"]
 _data = {
-"points": PackedVector2Array(2, -138, -2, 138, -57, 112, 0, 0, 0, 0, 4.48897, 230, -92.2912, -18.7035, 92.2912, 18.7035, 291.028, 113, -204.309, 2.86476, 204.309, -2.86476, 616.919, 217, -156.198, -66.2074, 156.198, 66.2074, 985.853, 157, -67.2271, -3.2526, 67.2271, 3.2526, 1191.84, 185)
+"points": PackedVector2Array(2, -138, -2, 138, -246.669, 86.0885, -79.9157, 50.4485, 79.9157, -50.4485, 84.0788, 217.361, -92.2912, -18.7035, 92.2912, 18.7035, 291.028, 113, -204.309, 2.86476, 204.309, -2.86476, 616.919, 217, -156.198, -66.2074, 156.198, 66.2074, 985.853, 157, -67.2271, -3.2526, 67.2271, 3.2526, 1191.84, 185, -71.8335, 11.2504, 71.8335, -11.2504, 1371.34, 98.0174, -103.262, 13.5066, 103.262, -13.5066, 1613.38, 231.931, -166.119, 15.774, 166.119, -15.774, 1844.34, 97.8478, 0, 0, 0, 0, 2141.41, 308.741)
 }
-point_count = 6
+point_count = 10
 
 [sub_resource type="Animation" id="Animation_6j7wp"]
 length = 11.0
@@ -89,13 +89,14 @@ _data = {
 
 [node name="PathFish" type="Path2D"]
 position = Vector2(35.6995, 926)
-scale = Vector2(1.62631, 1)
+rotation = 0.000358566
 curve = SubResource("Curve2D_04r4e")
 
 [node name="PathFollowFish" type="PathFollow2D" parent="."]
-position = Vector2(433.639, 183.946)
-rotation = 0.430663
-progress = 626.708
+position = Vector2(361.099, 142.806)
+rotation = 0.540314
+progress = 745.384
+cubic_interp = false
 
 [node name="Fish" parent="PathFollowFish" instance=ExtResource("1_n5oas")]
 scale = Vector2(0.3, 0.3)

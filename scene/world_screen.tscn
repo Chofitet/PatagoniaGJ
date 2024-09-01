@@ -1,11 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://dcc2cnspull21"]
+[gd_scene load_steps=19 format=3 uid="uid://dcc2cnspull21"]
 
 [ext_resource type="PackedScene" uid="uid://biqsdpxiniuh2" path="res://model/Isla_Submarina.glb" id="1_b0vmd"]
 [ext_resource type="Script" path="res://script/WorldScreen.cs" id="1_qqt5l"]
-[ext_resource type="Texture2D" uid="uid://6mg8idktc57o" path="res://icon.svg" id="2_vvqv7"]
+[ext_resource type="PackedScene" uid="uid://cgsjy6peh4ral" path="res://scene/control_fish.tscn" id="2_cfkgq"]
 [ext_resource type="PackedScene" uid="uid://bqrjkylgm5rvb" path="res://MapDrawer/draw_mesh_ray_cast_3d.tscn" id="3_co7cr"]
+[ext_resource type="Texture2D" uid="uid://6mg8idktc57o" path="res://icon.svg" id="3_pjg2p"]
 [ext_resource type="Shader" path="res://shader/under_water.gdshader" id="3_qrlw1"]
 [ext_resource type="PackedScene" uid="uid://crpy1o55lqirx" path="res://RigthPathDetector/detect_rigth_path_ray_cast.tscn" id="4_a3l3x"]
+[ext_resource type="Material" uid="uid://r1xncg4res7h" path="res://shader/Screen_VHS_Effect.tres" id="4_e33k0"]
+[ext_resource type="Texture2D" uid="uid://5eju2hj667gx" path="res://Radar.png" id="5_h6d7f"]
 [ext_resource type="Script" path="res://RigthPathDetector/rigth_path_manager.gd" id="6_s17wd"]
 [ext_resource type="PackedScene" uid="uid://jckg1ixi2u0b" path="res://RigthPathDetector/rigth_path_collider.tscn" id="7_nkkh8"]
 [ext_resource type="PackedScene" uid="uid://ngf0lrixrxgq" path="res://RigthPathDetector/end_path_collider.tscn" id="8_b6f7m"]
@@ -38,29 +41,31 @@ _cameraController = NodePath("CameraController")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
+[node name="ControlFish" parent="CanvasLayer" instance=ExtResource("2_cfkgq")]
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+visible = false
+offset_right = 506.0
+offset_bottom = 505.0
+texture = ExtResource("3_pjg2p")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+material = ExtResource("4_e33k0")
+offset_top = -2.0
+offset_right = 512.0
+offset_bottom = 510.0
+texture = ExtResource("5_h6d7f")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TextureRect"]
+self_modulate = Color(1, 1, 1, 0.223529)
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_vvqv7")
+texture = ExtResource("5_h6d7f")
 expand_mode = 1
 
 [node name="CameraController" type="Node3D" parent="."]
