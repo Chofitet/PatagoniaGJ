@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bntk8oqxtovp7"]
+
+[ext_resource type="FontFile" uid="uid://cc6kwf830lc" path="res://digital-7.ttf" id="1_hpu0i"]
+
+[resource]
+font = ExtResource("1_hpu0i")
+font_size = 111
+font_color = Color(0.415893, 0.800846, 0.693947, 1)

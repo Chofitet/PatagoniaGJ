@@ -1,13 +1,11 @@
 extends Control
 
 @export var LineReposition : float = 10
-@onready var Line2d = $Line2D
+@onready var Line2d : Line2D = $Line2D 
 @onready var BoatIcon = $Line2D/BoatIcon
 @onready var lastPoint = Vector2(0,0)
  
 func RefreshLine(vector2):
-	
-	#Dede el game managr le debe llegar el vector 2 dede 
 	
 	var vectorPosition = vector2 * LineReposition
 	
@@ -27,3 +25,9 @@ func RefreshLine(vector2):
 	else: BoatIcon.flip_v = true
 	
 	lastPoint = vectorPosition
+	
+	
+	SetPoints()
+
+func SetPoints():
+	PlayerSettings.SetPackedArrayLineMap(Line2d.points)

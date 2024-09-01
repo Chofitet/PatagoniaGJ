@@ -1093,6 +1093,7 @@ libraries = {
 autoplay = "idle_anim"
 
 [connection signal="NewColliderPoint" from="SubViewport/WorldScreen/CameraController/DrawMeshRayCast3D" to="objects/Map2d/MapViewPort/MapUI" method="RefreshLine"]
+[connection signal="OnEndPath" from="SubViewport/WorldScreen/CameraController/DetectRigthPathRayCastD2" to="SubViewport/WorldScreen/Colliders/RigthPathManager" method="EndPath"]
 [connection signal="OnLimit" from="SubViewport/WorldScreen/CameraController/DetectRigthPathRayCastD2" to="SubViewport/WorldScreen" method="TransportToLastCheckCollider"]
 [connection signal="OnSetStorm" from="StormController" to="objects/Rudder" method="AddForce"]
 [connection signal="StopStorm" from="StormController" to="objects/Rudder" method="ForceTo0"]
