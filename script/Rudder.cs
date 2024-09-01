@@ -6,6 +6,7 @@ public partial class Rudder : CharacterBody3D
 	[Export] private float _rotationSpeed = 1.0f;
 	[Export] private double _smoothFactor = 5.0f;
 	[Export] private double _targetRotationZ = 0.0f;
+	
 	private double _delta;
 
 	public override void _PhysicsProcess(double delta)

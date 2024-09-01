@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://script/GameManager.cs" id="1_4u7d0"]
 [ext_resource type="PackedScene" uid="uid://cbscsjnfph22k" path="res://scene/rudder.tscn" id="1_wmwm1"]
 [ext_resource type="PackedScene" uid="uid://dcc2cnspull21" path="res://scene/world_screen.tscn" id="2_6hoob"]
-[ext_resource type="Script" path="res://script/BoatRotation.gd" id="3_b3m73"]
+[ext_resource type="Script" path="res://script/BoatRotation.cs" id="3_b33yp"]
 [ext_resource type="Texture2D" uid="uid://bgidq0m2k3tuw" path="res://model/Tablero_Untitled.png" id="4_2f0mv"]
 [ext_resource type="PackedScene" uid="uid://dougrx573rp4j" path="res://MapDrawer/map_ui.tscn" id="4_kp4aw"]
 [ext_resource type="Texture2D" uid="uid://bvc3arjc35dax" path="res://model/Tablero_Untitled_1.png" id="5_f00c0"]
@@ -803,7 +803,7 @@ _accelerate = 0.4
 
 [node name="objects" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.202247, 0, 0.260692)
-script = ExtResource("3_b3m73")
+script = ExtResource("3_b33yp")
 
 [node name="Tablero" type="Node3D" parent="objects"]
 transform = Transform3D(-9.17939e-09, 0, -0.21, 0, 0.21, 0, 0.21, 0, -9.17939e-09, -0.554132, -1.19183, 1.68757)
@@ -957,7 +957,6 @@ LineReposition = 150.0
 
 [node name="Rudder" parent="objects" instance=ExtResource("1_wmwm1")]
 transform = Transform3D(0.832935, 0.0486822, -0.336873, 3.35201e-09, 0.890546, 0.128695, 0.340373, -0.119132, 0.824372, 1.61103, -0.65045, 2.12392)
-_forceAdded = 30.0
 
 [node name="CamViewport" type="Sprite3D" parent="objects"]
 transform = Transform3D(0.229875, 0, 0, 0, 0.229875, 0, 0, 0, 0.75, 0.546642, -0.302369, 2.31634)

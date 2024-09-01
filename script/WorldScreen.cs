@@ -31,6 +31,7 @@ public partial class WorldScreen : Node3D
 		Vector3 newRotation = new Vector3(_cameraController.Rotation.X, -rotationY,  _cameraController.Rotation.Z );
 		_cameraController.Rotation = newRotation;
 	}
+	
 	public void TransportToLastCheckCollider(Node3D collider)
 	{
 		GD.Print(collider.GlobalPosition);
