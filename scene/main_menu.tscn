@@ -147,7 +147,7 @@ text = "Salir"
 position = Vector2(1680, 161)
 sprite_frames = SubResource("SpriteFrames_l2apu")
 autoplay = "default"
-frame_progress = 0.0960691
+frame_progress = 0.282681
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="OnStartPressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="OnOptionsPressed"]

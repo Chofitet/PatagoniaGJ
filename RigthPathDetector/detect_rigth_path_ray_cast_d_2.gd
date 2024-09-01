@@ -13,8 +13,9 @@ func _physics_process(delta: float) -> void:
 		collider.CheckPassed()
 		LastCollider = collider
 		
-	
+	print(collider.name)
 	if collider.is_in_group("EndPath"):
+		print("endpath")
 		OnEndPath.emit()
 		
 	if collider.is_in_group("Limit"):
