@@ -1,9 +1,8 @@
-[gd_scene load_steps=73 format=4 uid="uid://c5ekqkaxtqetf"]
+[gd_scene load_steps=80 format=4 uid="uid://c5ekqkaxtqetf"]
 
 [ext_resource type="Script" path="res://script/GameManager.cs" id="1_4u7d0"]
 [ext_resource type="PackedScene" uid="uid://cbscsjnfph22k" path="res://scene/rudder.tscn" id="1_wmwm1"]
 [ext_resource type="PackedScene" uid="uid://dcc2cnspull21" path="res://scene/world_screen.tscn" id="2_6hoob"]
-[ext_resource type="Script" path="res://script/BoatRotation.cs" id="3_b33yp"]
 [ext_resource type="Texture2D" uid="uid://bgidq0m2k3tuw" path="res://model/Tablero_Untitled.png" id="4_2f0mv"]
 [ext_resource type="PackedScene" uid="uid://dougrx573rp4j" path="res://MapDrawer/map_ui.tscn" id="4_kp4aw"]
 [ext_resource type="Texture2D" uid="uid://bvc3arjc35dax" path="res://model/Tablero_Untitled_1.png" id="5_f00c0"]
@@ -15,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://c2ldwwukan8ri" path="res://model/old-wood-texture-with-weathered-green-paint_13756-27.jpg" id="9_pty2o"]
 [ext_resource type="Material" uid="uid://df7envwjc6jo" path="res://scene/pantalla.tres" id="10_pdt1o"]
 [ext_resource type="Script" path="res://StormController/storm_controller.gd" id="14_rtf2g"]
+[ext_resource type="Texture2D" uid="uid://dmwkhpkkm23km" path="res://model/raindrops-rain-wet-droplets-preview.jpg" id="15_mpxan"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eqlmm"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -775,8 +775,89 @@ uv1_scale = Vector3(2.48, 2.48, 2.48)
 [sub_resource type="BoxMesh" id="BoxMesh_jy3aj"]
 material = SubResource("StandardMaterial3D_60ebu")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ckhip"]
+transparency = 1
+blend_mode = 3
+depth_draw_mode = 1
+albedo_texture = ExtResource("15_mpxan")
+uv1_scale = Vector3(6.565, 2.045, 2.045)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dlhph"]
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_67fqk"]
 viewport_path = NodePath("StormController/SpriteWindow/SubViewport")
+
+[sub_resource type="Animation" id="Animation_kbi2g"]
+resource_name = "idle_anim"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.9, 3.66667),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0.0372104), Vector3(0, 0, -0.0366519)]
+}
+
+[sub_resource type="Animation" id="Animation_f4s6i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wp1nt"]
+resource_name = "RigthMoveAnim"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 1.2),
+"transitions": PackedFloat32Array(1, 2, 0.148652),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.174533), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n62gv"]
+resource_name = "LeftMoveAnim"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 1.2),
+"transitions": PackedFloat32Array(1, 2, 0.142705),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.174533), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3drr5"]
+_data = {
+"LeftMoveAnim": SubResource("Animation_n62gv"),
+"RESET": SubResource("Animation_f4s6i"),
+"RigthMoveAnim": SubResource("Animation_wp1nt"),
+"idle_anim": SubResource("Animation_kbi2g")
+}
 
 [node name="MainGame" type="Node3D"]
 
@@ -799,11 +880,10 @@ size_2d_override_stretch = true
 render_target_update_mode = 4
 
 [node name="WorldScreen" parent="SubViewport" instance=ExtResource("2_6hoob")]
-_accelerate = 0.4
+_accelerate = 0.5
 
 [node name="objects" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.202247, 0, 0.260692)
-script = ExtResource("3_b33yp")
 
 [node name="Tablero" type="Node3D" parent="objects"]
 transform = Transform3D(-9.17939e-09, 0, -0.21, 0, 0.21, 0, 0.21, 0, -9.17939e-09, -0.554132, -1.19183, 1.68757)
@@ -869,7 +949,7 @@ mesh = SubResource("ArrayMesh_xueyg")
 skeleton = NodePath("")
 
 [node name="Cube_001" type="MeshInstance3D" parent="objects/Tablero"]
-transform = Transform3D(0.522727, 0, 0, 0, 1.66237, 0, 0, 0, 13.679, -3.60571, 12.7967, -3.29508)
+transform = Transform3D(0.5273, 0, 0, 0, 1.83152, 0, 3.55271e-15, 0, 14.7082, -3.60571, 12.7967, -3.29508)
 material_override = ExtResource("7_1axhf")
 mesh = SubResource("BoxMesh_emotx")
 skeleton = NodePath("")
@@ -957,6 +1037,7 @@ LineReposition = 150.0
 
 [node name="Rudder" parent="objects" instance=ExtResource("1_wmwm1")]
 transform = Transform3D(0.832935, 0.0486822, -0.336873, 3.35201e-09, 0.890546, 0.128695, 0.340373, -0.119132, 0.824372, 1.61103, -0.65045, 2.12392)
+_forceAdded = 1.5
 
 [node name="CamViewport" type="Sprite3D" parent="objects"]
 transform = Transform3D(0.229875, 0, 0, 0, 0.229875, 0, 0, 0, 0.75, 0.546642, -0.302369, 2.31634)
@@ -974,16 +1055,23 @@ mesh = SubResource("BoxMesh_jy3aj")
 transform = Transform3D(-1.30942e-08, 0, 2.94626, 0, 2.71104, 0, -0.299561, 0, -1.28785e-07, 0.316363, 1.92357, 0.79809)
 mesh = SubResource("BoxMesh_jy3aj")
 
+[node name="WindowGlass" type="MeshInstance3D" parent="objects"]
+transform = Transform3D(2.76563, 0, 0, 0, 0.650786, 0, 0, 0, -0.0602186, 0.091618, 0.987135, 1.01991)
+material_override = SubResource("StandardMaterial3D_ckhip")
+mesh = SubResource("BoxMesh_dlhph")
+skeleton = NodePath("../../StormController")
+
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.992305, 0.001567, 0.000196045, -0.00116864, 0.645787, 0.753412, 0.00106217, -0.753411, 0.645788, -0.140385, 2.40225, 4.23306)
 light_color = Color(0.901032, 0.90508, 0.988427, 1)
-light_energy = 0.869
+light_energy = 1.656
 light_size = 0.205
 light_specular = 0.762
 spot_attenuation = 0.38
 
-[node name="StormController" type="Node3D" parent="."]
+[node name="StormController" type="Node3D" parent="." node_paths=PackedStringArray("Objects")]
 script = ExtResource("14_rtf2g")
+Objects = NodePath("../objects")
 
 [node name="SpriteWindow" type="Sprite3D" parent="StormController"]
 transform = Transform3D(0.15067, 0, 0, 0, 0.15067, 0, 0, 0, -2.78617, -0.110629, 0.961462, 1.23373)
@@ -997,9 +1085,17 @@ size = Vector2i(1986, 532)
 [node name="Timer" type="Timer" parent="StormController"]
 autostart = true
 
+[node name="BoatBounceMoveAnim" type="AnimationPlayer" parent="StormController"]
+root_node = NodePath("../../objects")
+libraries = {
+"": SubResource("AnimationLibrary_3drr5")
+}
+autoplay = "idle_anim"
+
 [connection signal="NewColliderPoint" from="SubViewport/WorldScreen/CameraController/DrawMeshRayCast3D" to="objects/Map2d/MapViewPort/MapUI" method="RefreshLine"]
 [connection signal="OnLimit" from="SubViewport/WorldScreen/CameraController/DetectRigthPathRayCastD2" to="SubViewport/WorldScreen" method="TransportToLastCheckCollider"]
 [connection signal="OnSetStorm" from="StormController" to="objects/Rudder" method="AddForce"]
+[connection signal="StopStorm" from="StormController" to="objects/Rudder" method="ForceTo0"]
 
 [editable path="SubViewport/WorldScreen"]
 [editable path="SubViewport/WorldScreen/Colliders/RigthPathManager/ColliderConteiner/RigthPathCollider"]

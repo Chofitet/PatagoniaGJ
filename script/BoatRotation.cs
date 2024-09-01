@@ -15,17 +15,17 @@ public partial class BoatRotation : Node3D
 
 	public override void _Process(double delta)
 	{
-        _timer += (float)delta;
+		_timer += (float)delta;
 		_scaledDelta = (float)delta * _TIME_SCALE;
 		
 	}
 
-    public override void _PhysicsProcess(double delta)
-    {
+	public override void _PhysicsProcess(double delta)
+	{
 		ApplyForceMovement(delta);
-    }
+	}
 
-    public void ApplyForceMovement(double delta)
+	public void ApplyForceMovement(double delta)
 	{
 		if (_scaledDelta != 0.0f && _timer <= _TIME_BETWEEN_BULLETS)
 		{

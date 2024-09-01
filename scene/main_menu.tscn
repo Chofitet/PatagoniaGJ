@@ -1,8 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxpt8hnq2a4dq"]
+[gd_scene load_steps=14 format=3 uid="uid://cxpt8hnq2a4dq"]
 
 [ext_resource type="Script" path="res://script/MainMenu.cs" id="1_i1ti6"]
 [ext_resource type="PackedScene" uid="uid://c5ekqkaxtqetf" path="res://scene/main_game.tscn" id="2_kqhn6"]
 [ext_resource type="Texture2D" uid="uid://dcetnxhmeeq3k" path="res://Menu_Inicio.png" id="3_vdmgu"]
+[ext_resource type="Texture2D" uid="uid://c7y6bw0nyb2aw" path="res://sprite/Alvatroz/Albatroz_Menu_3.png" id="4_j1hqr"]
+[ext_resource type="Texture2D" uid="uid://d24wmlmlhxcm4" path="res://sprite/Alvatroz/Albatroz_Menu_4.png" id="5_7dy8v"]
+[ext_resource type="Texture2D" uid="uid://cfxe4v2btsxvs" path="res://sprite/Alvatroz/Albatroz_Menu_5.png" id="6_boyvo"]
+[ext_resource type="Texture2D" uid="uid://cphvqdmt41c8u" path="res://sprite/Alvatroz/Albatroz_Menu_2.png" id="7_4104c"]
+[ext_resource type="Texture2D" uid="uid://ddii2n3h2jb2b" path="res://sprite/Alvatroz/Albatroz_Menu_1.png" id="8_fek2n"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2fhcb"]
 texture = ExtResource("3_vdmgu")
@@ -34,6 +39,38 @@ corner_radius_bottom_left = 16
 shadow_size = 5
 shadow_offset = Vector2(0, 3.41)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_l2apu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_j1hqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7dy8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_boyvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7dy8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j1hqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4104c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fek2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4104c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -60,10 +97,10 @@ anchor_left = 0.486
 anchor_top = 0.71
 anchor_right = 0.486
 anchor_bottom = 0.71
-offset_left = -96.1201
-offset_top = -73.8
-offset_right = 103.88
-offset_bottom = 70.2
+offset_left = -160.12
+offset_top = -117.8
+offset_right = 167.88
+offset_bottom = 114.2
 grow_vertical = 0
 theme_override_constants/separation = 9
 
@@ -105,6 +142,12 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_f8obh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_iehxt")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cjd0n")
 text = "Salir"
+
+[node name="alvatroz" type="AnimatedSprite2D" parent="."]
+position = Vector2(1680, 161)
+sprite_frames = SubResource("SpriteFrames_l2apu")
+autoplay = "default"
+frame_progress = 0.0960691
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="OnStartPressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="OnOptionsPressed"]

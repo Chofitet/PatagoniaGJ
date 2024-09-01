@@ -4,9 +4,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_04r4e"]
 _data = {
-"points": PackedVector2Array(2, -138, -2, 138, -246.669, 86.0885, -79.9157, 50.4485, 79.9157, -50.4485, 84.0788, 217.361, -92.2912, -18.7035, 92.2912, 18.7035, 291.028, 113, -204.309, 2.86476, 204.309, -2.86476, 616.919, 217, -156.198, -66.2074, 156.198, 66.2074, 985.853, 157, -67.2271, -3.2526, 67.2271, 3.2526, 1191.84, 185, -71.8335, 11.2504, 71.8335, -11.2504, 1371.34, 98.0174, -103.262, 13.5066, 103.262, -13.5066, 1613.38, 231.931, -166.119, 15.774, 166.119, -15.774, 1844.34, 97.8478, 0, 0, 0, 0, 2141.41, 308.741)
+"points": PackedVector2Array(2, -138, -2, 138, -246.669, 86.0885, -368.824, 47.2691, 368.824, -47.2691, 30.056, -88.7065, -345.07, 24.0667, 345.07, -24.0667, 230.384, 231.917, -204.309, 2.86476, 204.309, -2.86476, 725.718, -62.869, -164.772, -6.58121, 164.772, 6.58121, 1034.37, 197.629, -71.8335, 11.2504, 71.8335, -11.2504, 1371.34, 98.0174)
 }
-point_count = 10
+point_count = 6
 
 [sub_resource type="Animation" id="Animation_6j7wp"]
 length = 11.0
@@ -26,7 +26,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_chkwu"]
 resource_name = "first_follow"
 length = 11.0
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -90,18 +89,20 @@ _data = {
 [node name="PathFish" type="Path2D"]
 position = Vector2(35.6995, 926)
 rotation = 0.000358566
+scale = Vector2(0.8, 0.8)
 curve = SubResource("Curve2D_04r4e")
 
 [node name="PathFollowFish" type="PathFollow2D" parent="."]
-position = Vector2(361.099, 142.806)
-rotation = 0.540314
-progress = 745.384
+position = Vector2(-246.669, 86.0885)
+rotation = 1.58529
 cubic_interp = false
 
 [node name="Fish" parent="PathFollowFish" instance=ExtResource("1_n5oas")]
 scale = Vector2(0.3, 0.3)
+autoplay = "Move"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_tx1qm")
 }
+autoplay = "first_follow"

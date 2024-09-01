@@ -1,23 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://cgsjy6peh4ral"]
 
-[ext_resource type="PackedScene" uid="uid://3ndkduaa1v4f" path="res://scene/path_fish.tscn" id="2_nuy1y"]
+[ext_resource type="Script" path="res://script/InstanciateFishController.gd" id="1_k8lf2"]
 
 [node name="ControlFish" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_k8lf2")
 
-[node name="PathFish" parent="." instance=ExtResource("2_nuy1y")]
-scale = Vector2(0.575, 0.575)
-
-[node name="PathFollowFish" parent="PathFish" index="0"]
-position = Vector2(-246.669, 86.0885)
-rotation = 1.58529
-progress = 0.0
-
-[node name="Fish" parent="PathFish/PathFollowFish" index="0"]
-autoplay = "Move"
-
-[node name="AnimationPlayer" parent="PathFish" index="1"]
-autoplay = "first_follow"
-
-[editable path="PathFish"]
+[node name="Timer" type="Timer" parent="."]
+autostart = true
