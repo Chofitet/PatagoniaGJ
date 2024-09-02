@@ -4,5 +4,5 @@
 
 [resource]
 font = ExtResource("1_hpu0i")
-font_size = 111
+font_size = 76
 font_color = Color(0.415893, 0.800846, 0.693947, 1)

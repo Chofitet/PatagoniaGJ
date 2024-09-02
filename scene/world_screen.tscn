@@ -84,8 +84,12 @@ skeleton = NodePath("../../..")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CameraController"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-light_energy = 0.5
-spot_range = 20.0
+light_energy = 0.4
+light_indirect_energy = 1.436
+spot_range = 35.263
+spot_attenuation = 0.37
+spot_angle = 37.64
+spot_angle_attenuation = 2.73208
 
 [node name="DrawMeshRayCast3D" parent="CameraController" instance=ExtResource("3_co7cr")]
 

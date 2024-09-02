@@ -1,7 +1,7 @@
 extends Control
 
 @onready var percent = $Panel/Percent
-@onready var line = $MapPlayer/PlayerMap/Line2D
+@onready var line = $MapPlayer/PlayerMap/Control/Line2D
 
 func _ready() -> void:
 	SetLineMap()

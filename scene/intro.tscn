@@ -33,15 +33,15 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_820hx")
 [node name="Label" type="Label" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -702.0
-offset_top = -350.0
-offset_right = 702.0
-offset_bottom = 440.0
+anchors_preset = -1
+anchor_left = 0.134
+anchor_top = 0.148
+anchor_right = 0.866
+anchor_bottom = 0.913
+offset_left = 0.720001
+offset_top = 30.16
+offset_right = -0.720093
+offset_bottom = -6.04004
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 42
@@ -49,12 +49,11 @@ text = "Área: AMP Namuncurá, al sur de las Islas Malvinas.
 
 Estimade cartógrafe, se le ha encargado la tarea de proporcionar el mapa oficial de la APN Namuncurá.
 
-Le recordamos que necesitaremos que registre el límite de la primera capa de la isla. No se entretenga con los mates y tenga precaución con las tormentas mientras navega, el timón se puede ir de mambo.
+El mapa que debe trazar tiene que coincidir con el límite de la capa superior de la isla, procure guiar el barco de forma que coincida con esa línea.
+Tenga precaución con las tormentas mientras navega, el timón se puede ir de mambo.
 
 Sin más dilación ¡buen viaje!
-                                              
-
-  "
+                                                               "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

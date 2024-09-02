@@ -932,18 +932,21 @@ skeleton = NodePath("")
 
 [node name="Cylinder_004" type="MeshInstance3D" parent="objects/Tablero"]
 transform = Transform3D(0.0417645, 0.491525, 8.88178e-16, -0.0900167, 0.22805, 0, -3.33067e-16, -3.55271e-15, 0.0945192, 3.56235, 5.09938, -9.78631)
+visible = false
 material_override = ExtResource("6_sswrk")
 mesh = SubResource("ArrayMesh_d6meb")
 skeleton = NodePath("")
 
 [node name="Cube_006" type="MeshInstance3D" parent="objects/Tablero"]
 transform = Transform3D(0.361031, 0, 0, 0, 0.361031, 0, 0, 0, 0.361031, 4.22777, 5.4031, -9.79916)
+visible = false
 material_override = ExtResource("6_sswrk")
 mesh = SubResource("ArrayMesh_ln0xy")
 skeleton = NodePath("")
 
 [node name="Cylinder_005" type="MeshInstance3D" parent="objects/Tablero"]
 transform = Transform3D(0.000574623, 1.13108, 0, -0.250378, 0.00259586, 0, 0, 0, 0.250245, 2.17558, 6.52802, -9.77888)
+visible = false
 material_override = ExtResource("6_sswrk")
 mesh = SubResource("ArrayMesh_14qa8")
 skeleton = NodePath("")
@@ -991,16 +994,19 @@ skeleton = NodePath("")
 
 [node name="Cube_005" type="MeshInstance3D" parent="objects/Tablero"]
 transform = Transform3D(0.458604, 0, 0, 0, 0.513118, 0, 0, 0, 0.513118, 3.03531, 5.2176, -9.79245)
+visible = false
 mesh = SubResource("ArrayMesh_um835")
 skeleton = NodePath("")
 
 [node name="Cube_007" type="MeshInstance3D" parent="objects/Tablero"]
 transform = Transform3D(0.320158, 0, 0, 0, 0.320158, 0, 0, 0, 0.320158, 3.26478, 5.18779, -9.78772)
+visible = false
 mesh = SubResource("ArrayMesh_2wbof")
 skeleton = NodePath("")
 
 [node name="Cylinder_008" type="MeshInstance3D" parent="objects/Tablero"]
 transform = Transform3D(0.00106911, 2.10443, 0, -0.46584, 0.00482972, 0, 0, 0, 0.465593, 1.01307, 6.52802, -9.77888)
+visible = false
 mesh = SubResource("ArrayMesh_mduq1")
 skeleton = NodePath("")
 
