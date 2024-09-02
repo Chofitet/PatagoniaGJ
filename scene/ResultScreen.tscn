@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcfbgsyc12klk"]
+[gd_scene load_steps=11 format=3 uid="uid://bcfbgsyc12klk"]
 
 [ext_resource type="Script" path="res://script/result_screen_Controller.gd" id="1_1pusp"]
 [ext_resource type="StyleBox" uid="uid://mo1fot3kdpgf" path="res://scene/StyleResultScreen.tres" id="1_ug0e8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bhj4cakxjt8qi" path="res://sprite/image.png" id="2_wx2gi"]
 [ext_resource type="Texture2D" uid="uid://6mg8idktc57o" path="res://icon.svg" id="3_ysa4y"]
 [ext_resource type="Texture2D" uid="uid://b4v05uvbvm8tm" path="res://MapDrawer/PointingLine.png" id="6_ijne6"]
+[ext_resource type="AudioStream" uid="uid://cbt8kv134vkeo" path="res://Music/lofii.mp3" id="8_g2esy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6g3a"]
 bg_color = Color(0, 0, 0, 1)
@@ -139,13 +140,18 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.184314, 0.435294, 0.368627, 1)
 
-[node name="MapTextute" type="TextureRect" parent="MapPlayer/PlayerMap"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Line2D" type="Line2D" parent="MapPlayer/PlayerMap"]
+position = Vector2(329.438, 209.845)
+rotation = -1.55945
+scale = Vector2(0.119437, 0.119437)
+closed = true
+width = 100.0
+default_color = Color(0, 0.122034, 0.0998056, 1)
+texture = ExtResource("6_ijne6")
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 1
+end_cap_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="MapPlayer/PlayerMap"]
 material = ExtResource("2_36etv")
@@ -291,5 +297,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_f6g3a")
 position = Vector2(7, 13)
 color = Color(0.176471, 0.419608, 0.352941, 1)
 polygon = PackedVector2Array(63, 73, 116, 74, 116, 38, 168, 86, 121, 128, 121, 101, 64, 101)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_g2esy")
+autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="BackMenu"]

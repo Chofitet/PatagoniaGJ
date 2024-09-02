@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cxpt8hnq2a4dq"]
+[gd_scene load_steps=16 format=3 uid="uid://cxpt8hnq2a4dq"]
 
 [ext_resource type="Script" path="res://script/MainMenu.cs" id="1_i1ti6"]
 [ext_resource type="PackedScene" uid="uid://vqel4gjunwjj" path="res://scene/intro.tscn" id="2_v8fui"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cphvqdmt41c8u" path="res://sprite/Alvatroz/Albatroz_Menu_2.png" id="7_4104c"]
 [ext_resource type="Texture2D" uid="uid://ddii2n3h2jb2b" path="res://sprite/Alvatroz/Albatroz_Menu_1.png" id="8_fek2n"]
 [ext_resource type="PackedScene" uid="uid://t47yf2rt375c" path="res://scene/transition_screen.tscn" id="8_ywt2n"]
+[ext_resource type="AudioStream" uid="uid://ts8r8sedkp38" path="res://Music/MenuMusic.mp3" id="10_604fx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2fhcb"]
 texture = ExtResource("3_lh22a")
@@ -139,6 +140,10 @@ autoplay = "default"
 frame_progress = 0.282681
 
 [node name="TransitionScreen" parent="." instance=ExtResource("8_ywt2n")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_604fx")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="OnStartPressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="OnQuitPressed"]

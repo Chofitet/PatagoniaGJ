@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://c5ekqkaxtqetf"]
+[gd_scene load_steps=83 format=4 uid="uid://c5ekqkaxtqetf"]
 
 [ext_resource type="Script" path="res://script/GameManager.cs" id="1_4u7d0"]
 [ext_resource type="PackedScene" uid="uid://cbscsjnfph22k" path="res://scene/rudder.tscn" id="1_wmwm1"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" path="res://StormController/storm_controller.gd" id="14_rtf2g"]
 [ext_resource type="Texture2D" uid="uid://dmwkhpkkm23km" path="res://model/raindrops-rain-wet-droplets-preview.jpg" id="15_mpxan"]
 [ext_resource type="PackedScene" uid="uid://t47yf2rt375c" path="res://scene/transition_screen.tscn" id="16_gpr34"]
+[ext_resource type="AudioStream" uid="uid://ehbywklxk7x7" path="res://Music/GameMusicc.mp3" id="17_me0uu"]
+[ext_resource type="AudioStream" uid="uid://jwp4caskdaxe" path="res://Music/Seagull_wave.mp3" id="18_6l1dw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eqlmm"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -1098,6 +1100,14 @@ libraries = {
 autoplay = "idle_anim"
 
 [node name="TransitionScreen" parent="." instance=ExtResource("16_gpr34")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_me0uu")
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_6l1dw")
+autoplay = true
 
 [connection signal="NewColliderPoint" from="SubViewport/WorldScreen/CameraController/DrawMeshRayCast3D" to="objects/Map2d/MapViewPort/MapUI" method="RefreshLine"]
 [connection signal="OnEndPath" from="SubViewport/WorldScreen/CameraController/DetectRigthPathRayCastD2" to="SubViewport/WorldScreen/Colliders/RigthPathManager" method="EndPath"]

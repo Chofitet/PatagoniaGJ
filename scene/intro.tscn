@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://vqel4gjunwjj"]
+[gd_scene load_steps=8 format=3 uid="uid://vqel4gjunwjj"]
 
 [ext_resource type="Script" path="res://script/Intro.cs" id="1_7jxbw"]
 [ext_resource type="Texture2D" uid="uid://q6men37jjk5t" path="res://background/Intro_Image.png" id="2_lqgud"]
 [ext_resource type="PackedScene" uid="uid://dj3bjvbj2ptdk" path="res://effect/typewriter/typewriter.tscn" id="2_v7rpk"]
 [ext_resource type="PackedScene" uid="uid://t47yf2rt375c" path="res://scene/transition_screen.tscn" id="4_fst35"]
+[ext_resource type="PackedScene" uid="uid://cr3e734mga530" path="res://scene/tutorial.tscn" id="4_pvemn"]
+[ext_resource type="AudioStream" uid="uid://ts8r8sedkp38" path="res://Music/MenuMusic.mp3" id="5_8do36"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_820hx"]
 texture = ExtResource("2_lqgud")
@@ -36,23 +38,37 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -212.5
-offset_top = -11.5
-offset_right = 212.5
-offset_bottom = 11.5
+offset_left = -702.0
+offset_top = -350.0
+offset_right = 702.0
+offset_bottom = 440.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 42
-text = "Área Marina Protegida Namuncurá"
+text = "Área: AMP Namuncurá, al sur de las Islas Malvinas.
+
+Estimade cartógrafe, se le ha encargado la tarea de proporcionar el mapa oficial de la APN Namuncurá.
+
+Le recordamos que necesitaremos que registre el límite de la primera capa de la isla. No se entretenga con los mates y tenga precaución con las tormentas mientras navega, el timón se puede ir de mambo.
+
+Sin más dilación ¡buen viaje!
+
+  "
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Typewriter" parent="." node_paths=PackedStringArray("_parentLabel", "_transitionScreen") instance=ExtResource("2_v7rpk")]
 position = Vector2(606, 511)
+_mainGame = ExtResource("4_pvemn")
 _parentLabel = NodePath("../Label")
 _transitionScreen = NodePath("../TransitionScreen")
 
 [node name="TransitionScreen" parent="." instance=ExtResource("4_fst35")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8do36")
+autoplay = true
 
 [connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="." method="OnAnimationFinished"]
 

@@ -19,12 +19,12 @@ public partial class GameManager : Node
 		_transition.TransitionOnlyNormal();
 	}
 
-    public override void _Process(double delta)
-    {
-        PlayGame();
-    }
+	public override void _Process(double delta)
+	{
+		PlayGame();
+	}
 
-    public override async void _PhysicsProcess(double delta)
+	public override async void _PhysicsProcess(double delta)
 	{
 		if (_canPlayGame)
 		{

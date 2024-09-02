@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr3e734mga530"]
+
+[ext_resource type="Script" path="res://script/tutorial.gd" id="1_1j126"]
+[ext_resource type="Texture2D" uid="uid://bj3d30waha56a" path="res://background/Manejar_Volante.png" id="1_lg4k1"]
+[ext_resource type="PackedScene" uid="uid://c5ekqkaxtqetf" path="res://scene/main_game.tscn" id="2_tfl6c"]
+[ext_resource type="PackedScene" uid="uid://t47yf2rt375c" path="res://scene/transition_screen.tscn" id="3_jsrgb"]
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1j126")
+scene = ExtResource("2_tfl6c")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_lg4k1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="TransitionScreen" parent="." instance=ExtResource("3_jsrgb")]
+
+[connection signal="timeout" from="Timer" to="TransitionScreen" method="TransitionOnlyBlack"]
+[connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="." method="ChangeScene"]
+
+[editable path="TransitionScreen"]

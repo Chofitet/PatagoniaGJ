@@ -36,7 +36,8 @@ public partial class Typewriter : Node2D
 			_textPosition = -1;
 			_initialized = false;
 			_audioStreamTypewriter.Stop();
-
+			
+			
 			if (_transitionScreen == null) return;
 			_transitionScreen.TransitionOnlyBlack();
 			GetTree().ChangeSceneToPacked(_mainGame);
@@ -54,10 +55,10 @@ public partial class Typewriter : Node2D
 	public void StartWrite()
 	{
 		PrepareToType();
-        if(_initialized)
-            _delayTimer.Start();
-        else
-            GD.PrintErr("Aborting: The parent node is not a label. Make sure the typewriter scene is a child to a label node.");
+		if(_initialized)
+			_delayTimer.Start();
+		else
+			GD.PrintErr("Aborting: The parent node is not a label. Make sure the typewriter scene is a child to a label node.");
 	}
 
 	/*private void OnAnimationFinished(string animationName)
