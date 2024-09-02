@@ -4,13 +4,11 @@ public partial class MainMenu : Control
 {
 	[Export] private PackedScene _intro = null;
 	[Export] private TransitionScreen _transition = null;
-	[Export] private AnimationPlayer _animation = null;
 
 	private void OnStartPressed()
 	{
 		_transition.TransitionOnlyBlack();
 		if (_intro == null) return;
-		
 	}
 
 	private void OnQuitPressed() => GetTree().Quit();

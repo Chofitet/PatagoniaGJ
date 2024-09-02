@@ -13,7 +13,8 @@ config_version=5
 config/name="PatagoniaGJ"
 run/main_scene="res://scene/main_menu.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+run/max_fps=60
+config/icon="res://Icon.png"
 
 [autoload]
 
@@ -24,6 +25,7 @@ SoundController="*res://script/SoundController.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/canvas_textures/default_texture_repeat=1
 
 [dotnet]

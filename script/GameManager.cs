@@ -22,6 +22,7 @@ public partial class GameManager : Node
 	public override void _Process(double delta)
 	{
 		PlayGame();
+		//GoToMenuMain();
 	}
 
 	public override async void _PhysicsProcess(double delta)
@@ -52,6 +53,15 @@ public partial class GameManager : Node
 	{
 		_worldScreen.ApplyRotationCamera(-_rudder.Rotation.Z);
 	}
+
+	/*private void GoToMenuMain()
+	{
+		if (Input.IsActionJustPressed("ui_cancel"))
+		{
+			if (_mainMenu == null) return;
+			GetTree().ChangeSceneToPacked(_mainMenu);
+		}
+	}*/
 
 	private void OnAnimationFinished(string animationName)
 	{
