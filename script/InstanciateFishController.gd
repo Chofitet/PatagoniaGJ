@@ -1,5 +1,6 @@
 extends Control
 
+signal FishShow
 var FishInstance1 = preload("res://scene/path_fish.tscn")
 var FishInstance2 = preload("res://scene/path_fish_2.tscn")
 var FishInstance3 = preload("res://scene/path_fish_3.tscn")
@@ -21,6 +22,7 @@ func InstanceFish():
 	var fish
 	if !FishPull.is_empty():
 		fish = FishPull[0].instantiate()
+		FishShow.emit(FishPull.size())
 		FishPull.remove_at(0)
 	else:
 		FillFishPull()

@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://c1g0sjimipt4m"]
+
+[ext_resource type="FontFile" uid="uid://cin1o54l2r86q" path="res://pcsenior.ttf" id="1_hu8tg"]
+
+[resource]
+font = ExtResource("1_hu8tg")
+font_size = 34
+font_color = Color(0.415686, 0.8, 0.694118, 1)

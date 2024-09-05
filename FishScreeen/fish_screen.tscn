@@ -1,0 +1,527 @@
+[gd_scene load_steps=11 format=3 uid="uid://bbwqgqewsmwh"]
+
+[ext_resource type="LabelSettings" uid="uid://bntk8oqxtovp7" path="res://scene/FontResultScreen.tres" id="1_00f4l"]
+[ext_resource type="Texture2D" uid="uid://bi5501k6ei6ed" path="res://sprite/Hake/Pez_Merluza_Negra_6.png" id="2_u1tg4"]
+[ext_resource type="LabelSettings" uid="uid://c1g0sjimipt4m" path="res://FishScreeen/FISHiNFOFont.tres" id="3_rxdku"]
+[ext_resource type="Texture2D" uid="uid://c3qn33g6cfbik" path="res://sprite/sardina/Sardina_Fueguina_5.png" id="4_f5pb1"]
+[ext_resource type="Texture2D" uid="uid://b40rbjoduar5o" path="res://sprite/cangrejo/Cangrejo_Lithodes_Turkayi_1.png" id="5_sc86r"]
+[ext_resource type="Texture2D" uid="uid://5eju2hj667gx" path="res://Radar.png" id="6_1l5lg"]
+[ext_resource type="Material" uid="uid://r1xncg4res7h" path="res://shader/Screen_VHS_Effect.tres" id="6_tbydd"]
+[ext_resource type="Texture2D" uid="uid://chdbqrjr4k18v" path="res://sprite/cam.png" id="7_2yurk"]
+[ext_resource type="Texture2D" uid="uid://6mg8idktc57o" path="res://icon.svg" id="7_rcxan"]
+[ext_resource type="Texture2D" uid="uid://we26mhblxgxv" path="res://sprite/BUTTONIMG.png" id="8_wji3x"]
+
+[node name="FishScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -800.0
+offset_top = -310.0
+offset_right = 800.0
+offset_bottom = 310.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(800, 310)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.442021, 0.549516, 0.547013, 1)
+
+[node name="Merluza Negra" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Panel" parent="Merluza Negra"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.201
+anchor_top = 0.089
+anchor_right = 0.201
+anchor_bottom = 0.089
+offset_left = -217.6
+offset_top = -29.18
+offset_right = 321.4
+offset_bottom = 42.82
+
+[node name="Label" type="Label" parent="Merluza Negra/Name"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MERLUZA NEGRA"
+label_settings = ExtResource("1_00f4l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Photo" type="Panel" parent="Merluza Negra"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 116.0
+offset_right = 632.0
+offset_bottom = 592.0
+
+[node name="Photo" type="Panel" parent="Merluza Negra/Photo"]
+self_modulate = Color(0.197937, 0.197937, 0.197937, 1)
+offset_left = 35.0
+offset_top = 33.0
+offset_right = 499.0
+offset_bottom = 447.0
+
+[node name="TextureRect" type="TextureRect" parent="Merluza Negra/Photo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.542
+anchor_top = 0.513
+anchor_right = 0.542
+anchor_bottom = 0.513
+offset_left = -277.694
+offset_top = 111.592
+offset_right = 241.306
+offset_bottom = 382.592
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.790889
+texture = ExtResource("2_u1tg4")
+expand_mode = 5
+
+[node name="Info" type="Panel" parent="Merluza Negra"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.695
+anchor_top = 0.5
+anchor_right = 0.695
+anchor_bottom = 0.5
+offset_left = -437.0
+offset_top = -288.0
+offset_right = 386.0
+offset_bottom = 288.0
+
+[node name="Label" type="Label" parent="Merluza Negra/Info"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = 25.0
+offset_right = -26.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "- Vive al fondo del Océano Austral y del Atlántico Sur.
+
+- Hasta 2m de longitud y 100 km de peso.
+ 
+- Su áreas de reproducción estan al sur del Banco Namuncurá/Burdwood. "
+label_settings = ExtResource("3_rxdku")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Sardina Fueguina" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Panel" parent="Sardina Fueguina"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.201
+anchor_top = 0.089
+anchor_right = 0.201
+anchor_bottom = 0.089
+offset_left = -217.6
+offset_top = -29.18
+offset_right = 321.4
+offset_bottom = 42.82
+
+[node name="Label" type="Label" parent="Sardina Fueguina/Name"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sardina Fueguina"
+label_settings = ExtResource("1_00f4l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Photo" type="Panel" parent="Sardina Fueguina"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 116.0
+offset_right = 632.0
+offset_bottom = 592.0
+
+[node name="Photo" type="Panel" parent="Sardina Fueguina/Photo"]
+self_modulate = Color(0.197937, 0.197937, 0.197937, 1)
+offset_left = 35.0
+offset_top = 33.0
+offset_right = 499.0
+offset_bottom = 447.0
+
+[node name="TextureRect" type="TextureRect" parent="Sardina Fueguina/Photo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.542
+anchor_top = 0.513
+anchor_right = 0.542
+anchor_bottom = 0.513
+offset_left = -277.694
+offset_top = 111.592
+offset_right = 241.306
+offset_bottom = 382.592
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.790889
+texture = ExtResource("4_f5pb1")
+expand_mode = 5
+
+[node name="Info" type="Panel" parent="Sardina Fueguina"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.695
+anchor_top = 0.5
+anchor_right = 0.695
+anchor_bottom = 0.5
+offset_left = -437.0
+offset_top = -288.0
+offset_right = 386.0
+offset_bottom = 288.0
+
+[node name="Label" type="Label" parent="Sardina Fueguina/Info"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = 25.0
+offset_right = -26.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "- Es gris azulado en el dorso, aclarándose en los flancos, vientre blanco. Aletas transparentes.
+
+- De una longitud máxima de 20,5 cm 
+
+- Es la dieta de diversas predadores superiores. "
+label_settings = ExtResource("3_rxdku")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Cangrejo" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Panel" parent="Cangrejo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.201
+anchor_top = 0.089
+anchor_right = 0.201
+anchor_bottom = 0.089
+offset_left = -217.6
+offset_top = -29.18
+offset_right = 321.4
+offset_bottom = 42.82
+
+[node name="Label" type="Label" parent="Cangrejo/Name"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lithodes turkayi"
+label_settings = ExtResource("1_00f4l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Photo" type="Panel" parent="Cangrejo"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 116.0
+offset_right = 632.0
+offset_bottom = 592.0
+
+[node name="Photo" type="Panel" parent="Cangrejo/Photo"]
+self_modulate = Color(0.197937, 0.197937, 0.197937, 1)
+offset_left = 35.0
+offset_top = 33.0
+offset_right = 499.0
+offset_bottom = 447.0
+
+[node name="TextureRect" type="TextureRect" parent="Cangrejo/Photo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.542
+anchor_top = 0.513
+anchor_right = 0.542
+anchor_bottom = 0.513
+offset_left = -344.886
+offset_top = 34.812
+offset_right = 174.114
+offset_bottom = 415.986
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.790889
+texture = ExtResource("5_sc86r")
+expand_mode = 5
+
+[node name="Info" type="Panel" parent="Cangrejo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.695
+anchor_top = 0.5
+anchor_right = 0.695
+anchor_bottom = 0.5
+offset_left = -437.0
+offset_top = -288.0
+offset_right = 386.0
+offset_bottom = 288.0
+
+[node name="Label" type="Label" parent="Cangrejo/Info"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = 25.0
+offset_right = -26.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "- Es un decápodo, es decir que tiene 10 patas
+
+- Pinzas simétricas, cubiertas de espinas.
+
+- Habita el lecho de aguas marinas frías, en profundidades de entre 70 y 1696m"
+label_settings = ExtResource("3_rxdku")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="NoRegister" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="NoRegister"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 181.0
+offset_top = 70.0
+offset_right = -180.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="NoRegister/Panel"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 25.0
+offset_right = 457.0
+offset_bottom = 446.0
+
+[node name="TextureRect" type="TextureRect" parent="NoRegister/Panel/Panel"]
+self_modulate = Color(100, 0.161, 0.186, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_1l5lg")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="NoRegister/Panel/Panel"]
+self_modulate = Color(100, 0.161, 0.186, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_1l5lg")
+expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="NoRegister/Panel/Panel"]
+self_modulate = Color(100, 0.161, 0.186, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_1l5lg")
+expand_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="NoRegister/Panel/Panel"]
+self_modulate = Color(100, 0.161, 0.186, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_1l5lg")
+expand_mode = 2
+
+[node name="Panel2" type="Panel" parent="NoRegister/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.699
+anchor_top = 0.5
+anchor_right = 0.699
+anchor_bottom = 0.5
+offset_left = -372.061
+offset_top = -204.0
+offset_right = 323.939
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="NoRegister/Panel/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 55.0
+offset_top = 30.0
+offset_right = -55.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.876334, 0.0667092, 0, 1)
+text = "PEZ NO REGISTRADO"
+label_settings = ExtResource("3_rxdku")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CamTutorial" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CamTutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 98.0
+offset_top = 57.0
+offset_right = -97.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CamTutorial/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.175
+anchor_top = 0.499
+anchor_right = 0.175
+anchor_bottom = 0.499
+offset_left = -209.875
+offset_top = -218.48
+offset_right = 211.125
+offset_bottom = 218.52
+
+[node name="TextureRect" type="TextureRect" parent="CamTutorial/Panel/Panel"]
+self_modulate = Color(100, 0.161, 0.186, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 27.0
+offset_right = -19.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_2yurk")
+expand_mode = 1
+
+[node name="Panel2" type="Panel" parent="CamTutorial/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.699
+anchor_top = 0.5
+anchor_right = 0.699
+anchor_bottom = 0.5
+offset_left = -486.095
+offset_top = -236.0
+offset_right = 379.905
+offset_bottom = 236.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="CamTutorial/Panel/Panel2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -289.0
+offset_top = 53.0
+offset_right = 289.0
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.876334, 0.0667092, 0, 1)
+text = "F PARA USAR LA CAMARA"
+label_settings = ExtResource("3_rxdku")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CamTutorial/Panel"]
+self_modulate = Color(1, 1, 1, 0.592157)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.661
+anchor_top = 0.563
+anchor_right = 0.661
+anchor_bottom = 0.563
+offset_left = -353.705
+offset_top = -159.76
+offset_right = 354.295
+offset_bottom = 160.24
+texture = ExtResource("8_wji3x")
+
+[node name="screenEffect" type="TextureRect" parent="."]
+material = ExtResource("6_tbydd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_rcxan")
