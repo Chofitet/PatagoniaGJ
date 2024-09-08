@@ -8,9 +8,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_uybek"]
 _data = {
-"points": PackedVector2Array(-68, -50, 68, 50, -162, 25, -60, 2, 60, -2, 122, 127, -134, 48, 134, -48, 262, 15, -20, -124, 20, 124, 414, 181, -134, -8, 134, 8, 650, 175, -210, -68, 210, 68, 864, -21, -112, -92, 112, 92, 1080, 209, -70, 92, 70, -92, 1288, 47)
+"points": PackedVector2Array(-68, -50, 68, 50, -162, 25, -95.7569, -13.8919, 95.7569, 13.8919, 41.25, 190, -183, 0.324165, 183, -0.324165, 201.25, 285, -167, -16.7294, 167, 16.7294, 467.5, 485, -107.271, 132.433, 107.271, -132.433, 638.75, 298.75, -172.649, -22.8651, 172.649, 22.8651, 883.75, 116.25)
 }
-point_count = 8
+point_count = 6
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4nkhm"]
 animations = [{
@@ -58,18 +58,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_kwtkl"]
 resource_name = "first_follow"
@@ -86,18 +74,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 11),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(35, 903)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gtmkb"]
 _data = {
@@ -110,11 +86,11 @@ scale = Vector2(0.8, 0.8)
 curve = SubResource("Curve2D_uybek")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2(1288, 47)
-rotation = -0.920375
-progress = 2055.25
+position = Vector2(-162, 25)
+rotation = 0.634023
 
 [node name="fish" type="AnimatedSprite2D" parent="PathFollow2D"]
+position = Vector2(2.64454, 2.34657)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_4nkhm")
 autoplay = "default"

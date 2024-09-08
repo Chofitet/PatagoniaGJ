@@ -28,5 +28,5 @@ func SetActualFish(fishNum):
 	print("pez")
 	actualFish = fishNum
 	isAFishInCam = true
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(10).timeout
 	isAFishInCam = false

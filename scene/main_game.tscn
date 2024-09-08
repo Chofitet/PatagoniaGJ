@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=4 uid="uid://c5ekqkaxtqetf"]
+[gd_scene load_steps=89 format=4 uid="uid://c5ekqkaxtqetf"]
 
 [ext_resource type="Script" path="res://script/GameManager.cs" id="1_4u7d0"]
 [ext_resource type="PackedScene" uid="uid://cbscsjnfph22k" path="res://scene/rudder.tscn" id="1_wmwm1"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dy5tfaj1nnqj1" path="res://model/Tablero_Untitled_2.png" id="6_bhifn"]
 [ext_resource type="Material" uid="uid://ctqhcr6hta3rq" path="res://model/manija.tres" id="6_sswrk"]
 [ext_resource type="Material" uid="uid://bwohfvip0yfj4" path="res://model/chapa.tres" id="7_1axhf"]
+[ext_resource type="AudioStream" uid="uid://c5cd2lgid7qkl" path="res://Sfx/old-camera-shutter-183213.mp3" id="7_cgh27"]
 [ext_resource type="PackedScene" uid="uid://cbrfmj7dhff0r" path="res://StormController/WindowController/control_window.tscn" id="8_ir4mb"]
 [ext_resource type="Texture2D" uid="uid://c2ldwwukan8ri" path="res://model/old-wood-texture-with-weathered-green-paint_13756-27.jpg" id="9_pty2o"]
 [ext_resource type="Material" uid="uid://df7envwjc6jo" path="res://scene/pantalla.tres" id="10_pdt1o"]
@@ -114,6 +115,65 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_rdmwn")
+
+[sub_resource type="Animation" id="Animation_8dbot"]
+resource_name = "TakePhoto"
+length = 0.3
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Cylinder_005")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array()
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cylinder_005:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.00140005, -0.13504, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("camSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.2599,
+"stream": ExtResource("7_cgh27")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="Animation" id="Animation_cggbh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cylinder_005:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0a6qc"]
+_data = {
+"RESET": SubResource("Animation_cggbh"),
+"TakePhoto": SubResource("Animation_8dbot")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vvi0q"]
 resource_name = "Material.001"
@@ -912,7 +972,7 @@ transform = Transform3D(-5.27469e-12, -1.03826e-08, -0.0525514, -0.0525794, 0.00
 script = ExtResource("3_qg368")
 
 [node name="Cylinder_005" type="MeshInstance3D" parent="objects/CamButton"]
-transform = Transform3D(1, 0, 6.93889e-18, 0, 1, 8.88178e-16, -6.93889e-18, -1.42109e-14, 1, 0, 0, 0)
+transform = Transform3D(0.999999, 4.65661e-09, 1.38778e-17, 0, 1, 0, -4.16334e-17, -7.10543e-14, 1, 0, 0, 0)
 material_override = ExtResource("6_sswrk")
 mesh = SubResource("ArrayMesh_14qa8")
 skeleton = NodePath("")
@@ -921,6 +981,14 @@ skeleton = NodePath("")
 transform = Transform3D(1.86055, 1.67638e-08, 9.71445e-17, -2.85218e-09, 1.86055, 8.88178e-15, -5.55112e-17, 0, 1.86055, -0.0345016, -1.02243, -0.0926342)
 mesh = SubResource("ArrayMesh_mduq1")
 skeleton = NodePath("")
+
+[node name="cambtnanim" type="AnimationPlayer" parent="objects/CamButton"]
+libraries = {
+"": SubResource("AnimationLibrary_0a6qc")
+}
+
+[node name="camSound" type="AudioStreamPlayer" parent="objects/CamButton"]
+volume_db = 8.701
 
 [node name="Tablero" type="Node3D" parent="objects"]
 transform = Transform3D(-9.17939e-09, 0, -0.21, 0, 0.21, 0, 0.21, 0, -9.17939e-09, -0.554132, -1.19183, 1.68757)
