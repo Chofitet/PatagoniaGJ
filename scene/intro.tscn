@@ -55,7 +55,6 @@ Tenga precaución con las tormentas mientras navega, el timón se puede ir de ma
 Sin más dilación ¡buen viaje!
                                                                "
 horizontal_alignment = 1
-vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Typewriter" parent="." node_paths=PackedStringArray("_parentLabel", "_transitionScreen") instance=ExtResource("2_v7rpk")]

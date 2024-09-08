@@ -77,6 +77,7 @@ offset_bottom = 592.0
 
 [node name="Photo" type="Panel" parent="Merluza Negra/Photo"]
 self_modulate = Color(0.197937, 0.197937, 0.197937, 1)
+layout_mode = 0
 offset_left = 35.0
 offset_top = 33.0
 offset_right = 499.0
@@ -173,6 +174,7 @@ offset_bottom = 592.0
 
 [node name="Photo" type="Panel" parent="Sardina Fueguina/Photo"]
 self_modulate = Color(0.197937, 0.197937, 0.197937, 1)
+layout_mode = 0
 offset_left = 35.0
 offset_top = 33.0
 offset_right = 499.0
@@ -269,6 +271,7 @@ offset_bottom = 592.0
 
 [node name="Photo" type="Panel" parent="Cangrejo/Photo"]
 self_modulate = Color(0.197937, 0.197937, 0.197937, 1)
+layout_mode = 0
 offset_left = 35.0
 offset_top = 33.0
 offset_right = 499.0

@@ -11,9 +11,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_knwjn"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1128, -453, 30.2381, -25.1984, -30.2381, 25.1984, 957, -456, 90.7143, 17.6389, -90.7143, -17.6389, 888, -363, 85.6746, -22.6786, -85.6746, 22.6786, 742, -429, 64.3845, 19.8119, -64.3845, -19.8119, 609, -303, 52.9167, -75.5953, -52.9167, 75.5953, 438, -387, 113.393, -35.2778, -113.393, 35.2778, 300, -332, 108.353, -52.9167, -108.353, 52.9167, 248, -189, 50.3968, -2.51984, -50.3968, 2.51984, 50, -368, 0, 0, 0, 0, -147, -329)
+"points": PackedVector2Array(0, 0, 0, 0, 1023, -460, 15.1361, -106.372, 0, 0, 811, -343, 90.7143, 17.6389, -90.7143, -17.6389, 705, -197, 85.6746, -22.6786, -85.6746, 22.6786, 480, -339, 75.6334, -18.0975, -75.6334, 18.0975, 444, -27, 171.373, 18.4484, -171.373, -18.4484, 152, -197)
 }
-point_count = 10
+point_count = 6
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x8gsh"]
 animations = [{
@@ -79,18 +79,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_2l34w"]
 resource_name = "fish_follow"
@@ -107,18 +95,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 10.3333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(35, 903)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w4lrn"]
 _data = {
@@ -127,11 +103,12 @@ _data = {
 }
 
 [node name="PathFish3" type="Path2D"]
+position = Vector2(-357, 459)
 curve = SubResource("Curve2D_knwjn")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2(1128, -453)
-rotation = -3.12405
+position = Vector2(1023, -460)
+rotation = 2.6373
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PathFollow2D"]
 rotation = 1.90672
@@ -147,3 +124,12 @@ libraries = {
 "": SubResource("AnimationLibrary_w4lrn")
 }
 autoplay = "fish_follow"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+show_behind_parent = true
+layout_direction = 1
+offset_left = 138.0
+offset_top = -539.0
+offset_right = 1067.0
+offset_bottom = 78.0

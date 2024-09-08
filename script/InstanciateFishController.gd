@@ -8,8 +8,8 @@ var FishPull :=[]
 
 func _ready() -> void:
 	FillFishPull()
-	
-	$Timer.wait_time = randf_range(10,15)
+	await get_tree().create_timer(7).timeout
+	$Timer.wait_time = randf_range(15,20)
 	$Timer.timeout.connect(InstanceFish)
 	
 
@@ -22,10 +22,12 @@ func InstanceFish():
 	var fish
 	if !FishPull.is_empty():
 		fish = FishPull[0].instantiate()
-		FishShow.emit(FishPull.size())
+		FishShow.emit(FishPull.size() - 1)
 		FishPull.remove_at(0)
 	else:
 		FillFishPull()
 		fish = FishPull[0].instantiate()
+		FishShow.emit(FishPull.size() - 1)
+		FishPull.remove_at(0)
 	
 	add_child(fish)
