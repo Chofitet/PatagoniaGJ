@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cxpt8hnq2a4dq"]
+[gd_scene load_steps=17 format=3 uid="uid://cxpt8hnq2a4dq"]
 
 [ext_resource type="Script" path="res://script/MainMenu.cs" id="1_i1ti6"]
 [ext_resource type="PackedScene" uid="uid://vqel4gjunwjj" path="res://scene/intro.tscn" id="2_v8fui"]
@@ -13,6 +13,8 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2fhcb"]
 texture = ExtResource("3_lh22a")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_deedf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8obh"]
 bg_color = Color(0.864675, 0.864675, 0.864675, 1)
@@ -108,6 +110,7 @@ grow_vertical = 0
 theme_override_constants/separation = 20
 
 [node name="Start" type="Button" parent="VBoxContainer"]
+material = SubResource("CanvasItemMaterial_deedf")
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
