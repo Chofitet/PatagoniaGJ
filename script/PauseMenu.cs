@@ -17,11 +17,15 @@ public partial class PauseMenu : Control
 	private void Resume()
 	{
 		GetTree().Paused = false;
+		Input.MouseMode = Input.MouseModeEnum.Captured;
+		Input.MouseMode = Input.MouseModeEnum.Hidden;
 		_animation.PlayBackwards("blur");
 	}
 
 	private void Pause()
 	{
+		Input.MouseMode = Input.MouseModeEnum.Captured;
+		Input.MouseMode = Input.MouseModeEnum.Visible;
 		GetTree().Paused = true;
 		_animation.Play("blur");
 	}

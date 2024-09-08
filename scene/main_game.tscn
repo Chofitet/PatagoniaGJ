@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=4 uid="uid://c5ekqkaxtqetf"]
+[gd_scene load_steps=90 format=4 uid="uid://c5ekqkaxtqetf"]
 
 [ext_resource type="Script" path="res://script/GameManager.cs" id="1_4u7d0"]
 [ext_resource type="PackedScene" uid="uid://cbscsjnfph22k" path="res://scene/rudder.tscn" id="1_wmwm1"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://t47yf2rt375c" path="res://scene/transition_screen.tscn" id="16_gpr34"]
 [ext_resource type="AudioStream" uid="uid://ehbywklxk7x7" path="res://Music/GameMusicc.mp3" id="17_me0uu"]
 [ext_resource type="AudioStream" uid="uid://jwp4caskdaxe" path="res://Music/Seagull_wave.mp3" id="18_6l1dw"]
+[ext_resource type="PackedScene" uid="uid://bx727uu12onoa" path="res://scene/pause_menu.tscn" id="22_j16g1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eqlmm"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -116,6 +117,21 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_rdmwn")
 
+[sub_resource type="Animation" id="Animation_cggbh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cylinder_005:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_8dbot"]
 resource_name = "TakePhoto"
 length = 0.3
@@ -153,21 +169,6 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/2/use_blend = true
-
-[sub_resource type="Animation" id="Animation_cggbh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cylinder_005:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0a6qc"]
 _data = {
@@ -1203,6 +1204,8 @@ autoplay = true
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_6l1dw")
 autoplay = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("22_j16g1")]
 
 [connection signal="FishShow" from="SubViewport/WorldScreen/CanvasLayer/ControlFish" to="objects/FishScreen" method="SetActualFish"]
 [connection signal="NewColliderPoint" from="SubViewport/WorldScreen/CameraController/DrawMeshRayCast3D" to="objects/Map2d/MapViewPort/MapUI" method="RefreshLine"]

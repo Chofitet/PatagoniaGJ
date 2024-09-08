@@ -15,6 +15,8 @@ public partial class GameManager : Node
 
 	public override void _Ready()
 	{
+		Input.MouseMode = Input.MouseModeEnum.Captured;
+		Input.MouseMode = Input.MouseModeEnum.Hidden;
 		_televisionCam.Visible = false;
 		_televisionCamTwo.Visible = false;
 

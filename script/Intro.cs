@@ -7,6 +7,7 @@ public partial class Intro : Control
 
 	public override void _Ready()
 	{
+		Input.MouseMode = Input.MouseModeEnum.Hidden;
 		_transition.TransitionOnlyNormal();
 	}
 
