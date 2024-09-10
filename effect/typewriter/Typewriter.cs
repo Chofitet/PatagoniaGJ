@@ -14,7 +14,19 @@ public partial class Typewriter : Node2D
 	private string _textToType = string.Empty;
 	private bool _initialized = true;
 
-	private void PrepareToType()
+	private float _typeWritertimeout = 2.0f;
+
+	private bool _canStartTimer = false;
+
+    public override void _Process(double delta)
+    {
+        if (_canStartTimer == true)
+			_typeWritertimeout -= (float)delta;
+		if (_typeWritertimeout <= 0.0f)
+			TimerTimeout();
+    }
+
+    private void PrepareToType()
 	{
 		if (_parentLabel == null) return;
 		_textToType = _parentLabel.Text;
@@ -36,11 +48,8 @@ public partial class Typewriter : Node2D
 			_textPosition = -1;
 			_initialized = false;
 			_audioStreamTypewriter.Stop();
-			
-			
-			if (_transitionScreen == null) return;
-			_transitionScreen.TransitionOnlyBlack();
-			GetTree().ChangeSceneToPacked(_mainGame);
+
+			_canStartTimer = true;
 		}
 	}
 
@@ -50,7 +59,6 @@ public partial class Typewriter : Node2D
 		_typeTimer.Start();
 		_audioStreamTypewriter.Play();
 	}
-
 	
 	public void StartWrite()
 	{
@@ -61,9 +69,10 @@ public partial class Typewriter : Node2D
 			GD.PrintErr("Aborting: The parent node is not a label. Make sure the typewriter scene is a child to a label node.");
 	}
 
-	/*private void OnAnimationFinished(string animationName)
+	private void TimerTimeout()
 	{
-		if (animationName == "fade_to_black")
-			GetTree().ChangeSceneToPacked(_mainGame);
-	}*/
+		if (_transitionScreen == null) return;
+		_transitionScreen.TransitionOnlyBlack();
+		GetTree().ChangeSceneToPacked(_mainGame);
+	}
 }

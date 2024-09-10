@@ -4,6 +4,10 @@ public partial class PauseMenu : Control
 {
 	[Export] private AnimationPlayer _animation = null;
 
+	private bool _gameIsPause = false;
+
+	public bool GameIsPause { get { return _gameIsPause; } }
+
 	public override void _Ready()
 	{
 		_animation.Play("RESET");
@@ -16,6 +20,7 @@ public partial class PauseMenu : Control
 
 	private void Resume()
 	{
+		_gameIsPause = false;
 		GetTree().Paused = false;
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		Input.MouseMode = Input.MouseModeEnum.Hidden;
@@ -24,6 +29,7 @@ public partial class PauseMenu : Control
 
 	private void Pause()
 	{
+		_gameIsPause = true;
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		Input.MouseMode = Input.MouseModeEnum.Visible;
 		GetTree().Paused = true;
@@ -47,6 +53,7 @@ public partial class PauseMenu : Control
 	{
 		Resume();
 		GetTree().ReloadCurrentScene();
+		//_animation.PlayBackwards("blur");
 	}
 
 		private void OnQuitPressed()

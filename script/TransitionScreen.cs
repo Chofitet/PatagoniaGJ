@@ -27,15 +27,4 @@ public partial class TransitionScreen : CanvasLayer
 		_colorRect.Visible = true;
 		_animationPlayer.Play("fade_to_normal");
 	}
-
-	/*private void OnAnimationPlayerAnimationFinished(string animationName)
-	{
-		if (animationName == "fade_to_black")
-		{
-			_animationPlayer.Play("fade_to_normal");
-		}
-		else
-			animationName = "fade_to_normal";
-				_colorRect.Visible = false;
-	}*/
 }

@@ -7,11 +7,16 @@ public partial class MainMenu : Control
 
 	private void OnStartPressed()
 	{
+		Input.MouseMode = Input.MouseModeEnum.Hidden;
 		_transition.TransitionOnlyBlack();
 		if (_intro == null) return;
 	}
 
-	private void OnQuitPressed() => GetTree().Quit();
+	private void OnQuitPressed()
+	{
+		Input.MouseMode = Input.MouseModeEnum.Hidden;
+		GetTree().Quit();
+	} 
 
 	private void OnAnimationFinished(string animationName)
 	{

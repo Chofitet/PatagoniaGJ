@@ -927,8 +927,9 @@ _data = {
 
 [node name="MainGame" type="Node3D"]
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("_rudder", "_worldScreen", "_transition", "_televisionCam", "_televisionCamTwo")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("_pauseMenu", "_rudder", "_worldScreen", "_transition", "_televisionCam", "_televisionCamTwo")]
 script = ExtResource("1_4u7d0")
+_pauseMenu = NodePath("../PauseMenu")
 _rudder = NodePath("../objects/Rudder")
 _worldScreen = NodePath("../SubViewport/WorldScreen")
 _transition = NodePath("../TransitionScreen")
